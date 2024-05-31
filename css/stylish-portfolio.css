@@ -15,7 +15,10 @@ body {
 body {
     font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-
+.contact{
+    width:370px;
+    height: 200px;
+}
 .text-vertical-center {
     display: table-cell;
     text-align: center;
