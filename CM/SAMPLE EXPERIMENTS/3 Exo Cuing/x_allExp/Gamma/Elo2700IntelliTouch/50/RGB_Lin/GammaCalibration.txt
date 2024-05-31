@@ -1,0 +1,16 @@
+
+
+	 ----------------------------------- 
+	|         Gamma calibration           |
+	 ----------------------------------- 
+
+	 Screen ID : 			Elo2700IntelliTouch
+	 Screen distance : 		50 cm
+	 Calibration type : 	RGB linearized
+	 Creation date : 		25-Sep-2015
+	 Creation time : 		0:57
+
+	 Max RED lum. : 		2.240000e+001
+	 Max GREEN lum. : 		6.880000e+001
+	 Max BLUE lum. : 		6.690000e+000
+	 Max GRAY lum. : 		9.790000e+001

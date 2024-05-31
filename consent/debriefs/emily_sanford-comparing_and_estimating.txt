@@ -1,0 +1,29 @@
+
+Emily Sanford - Comparing and Estimating
+------
+How many apples are on that tree? Even without counting, 
+you can “guesstimate” approximately how many there are, 
+and if you are looking at two different trees, you get a 
+strong sense of which one has more apples. The mechanism 
+by which you make these estimates is known as the 
+Approximate Number System (ANS). Although many species 
+seem to have an ANS, and in humans this ability seems 
+related to other math skills, it remains unclear how the 
+ANS figures out how many items you are looking at. In 
+fact, it is an open question whether the mechanisms used 
+to “guesstimate” the number of apples on one tree are 
+even the same as those you use when you determine which 
+of the two trees has more apples.
+
+In this experiment, you performed both comparison and 
+estimation judgments. We are interested in how much these 
+two tasks tap into the same mechanisms in the mind. We 
+will use computational models to quantify your precision 
+on each task and see to what extent they are related to 
+one another. Can we predict how well you will do on the 
+comparison task, knowing how well you did on the 
+estimation task?
+
+Thank you so much for participating, and please let me 
+know if you have any questions.
+******

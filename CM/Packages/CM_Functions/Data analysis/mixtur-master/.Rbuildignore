@@ -1,0 +1,10 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^data-raw$
+^images$
+^doc$
+^Meta$
+^cran-comments\.md$
+^CRAN-RELEASE$
+^README\.Rmd$
+^CRAN-SUBMISSION$

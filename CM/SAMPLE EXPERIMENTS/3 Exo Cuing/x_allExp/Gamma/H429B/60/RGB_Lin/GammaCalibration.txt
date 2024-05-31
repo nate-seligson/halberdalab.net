@@ -1,0 +1,16 @@
+
+
+	 ----------------------------------- 
+	|         Gamma calibration           |
+	 ----------------------------------- 
+
+	 Screen ID : 			H429C
+	 Screen distance : 		60 cm
+	 Calibration type : 	RGB linearized
+	 Creation date : 		26-Sep-2010
+	 Creation time : 		18:9
+
+	 Max RED lum. : 		2.120000e+01
+	 Max GREEN lum. : 		5.170000e+01
+	 Max BLUE lum. : 		9.950000e+00
+	 Max GRAY lum. : 		7.180000e+01

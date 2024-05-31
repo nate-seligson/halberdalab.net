@@ -1,0 +1,508 @@
+%% Import our data
+
+clearvars -except figs2keep
+close all
+load('colz.mat');
+load('colorsAll.mat')
+% figs2keep = [12];
+% 
+% all_figs = findobj(0, 'type', 'figure');
+% delete(setdiff(all_figs, figs2keep));
+
+clearvars subjID;
+load('subjectStructNM3_1_23.mat')
+
+subListAll = string(fieldnames(subjectStructNM));
+IncludedDataMatrix = [];
+for ii=1: length(subListAll)
+    subjID(ii) = (subListAll(ii))';
+   
+   % subjID(ii) = ('s1_subject_id')';
+    
+  [colors,tickLabels] =  getColors();
+  
+  guessd= table2array(subjectStructNM.(subjID(ii)).guessTrials);
+%%guessd = importdata('guessTrials.csv');
+%%guessresp = guessd.data(:,2);
+guessresp = str2double(guessd(:,23)); %reported color discrete
+
+
+
+%transformed:
+guessdTransformed = table2array(subjectStructNM.(subjID(ii)).guessTrialsTransformed);
+guessrespTransformed = str2double(guessdTransformed(:,36));
+
+
+%make array of trial numbers
+guessTrialNum = double(1):double(length(guessresp));
+guessTrialNum = guessTrialNum';
+
+
+
+
+%% Getting our data: non guess 66 ms trials.
+%intd = importdata('mostTargetSizeCM.csv');
+ intd66= table2array(subjectStructNM.(subjID(ii)).nonGuessTrials66);
+ 
+  intd66Transformed = table2array(subjectStructNM.(subjID(ii)).nonGuessTrials66Transformed);
+
+%intAns = intd.data(:,1); 
+intAns66 = str2double(intd66(:,30)); %CMColor, the true color
+
+%intResp = intd.data(:,2);
+intResp66 = str2double(intd66(:,23)); %Reported color discrete
+
+
+
+intResp66Transformed = str2double(intd66Transformed(:,36));
+
+
+%% Getting our data: non guess, ALL trials.
+%intd = importdata('mostTargetSizeCM.csv');
+ intd= table2array(subjectStructNM.(subjID(ii)).nonGuessTrials);
+intdTransformed = table2array(subjectStructNM.(subjID(ii)).nonGuessTrialsTransformed);
+%intAns = intd.data(:,1); 
+intAns = str2double(intd(:,30)); %CMColor, the true color
+
+
+%intResp = intd.data(:,2);
+intResp = str2double(intd(:,23)); %Reported color discrete
+
+intAnsTransformed  = str2double(intdTransformed(:,30));%transformed true color, 36
+intRespTransformed = str2double(intdTransformed(:,36)); %transformed response, 35
+
+
+%% Get all data
+cleanedData = subjectStructNM.(subjID(ii)).cleanedData;
+if ii == 1
+
+intRespTransformedAll = [];
+intRespAll = [];
+intAnsAll = [];
+guessrespAll = [];
+intAnsTransformedAll = [];
+guessTrialNumAll= [];
+cleanedDataAll = [];
+else
+    
+end
+
+
+guessrespAll = vertcat(guessrespAll,guessresp);
+intAnsAll = vertcat(intAnsAll,intAns);
+intRespAll = vertcat(intRespAll,intResp);
+intRespTransformedAll = vertcat(intRespTransformedAll,intRespTransformed);
+intAnsTransformedAll = vertcat(intAnsTransformedAll,intAnsTransformed);
+guessTrialNumAll = vertcat(guessTrialNumAll, guessTrialNum);
+cleanedDataAll = vertcat(cleanedDataAll,cleanedData);
+end
+  
+
+%% plot guess resp pretty
+% figure
+% histogram(guessrespAll,'Normalization','probability')
+% 
+% [f,xi] = ksdensity(guessrespAll);
+% hold on
+% plot(xi,f)
+
+
+
+%% Get standard deviations for guesses
+responses0ms = sort(guessrespAll);
+%[N,edgesGuess,binsGuess] = histcounts(guessrespAll);
+
+[N,edgesGuess,binsGuess] = histcounts(guessrespAll);
+
+for ii = 1:size(N,2)
+  bin_std(:,ii) = std(guessrespAll(binsGuess==ii,:))';
+end
+
+[NAns,edgesAns,binsAns] = histcounts(intAnsAll,edgesGuess);
+
+binsAns = binsAns';
+
+for ii = 1:size(binsAns,2)
+   
+     binsAns(2,ii) =  bin_std(binsAns(1,ii));
+     
+end
+
+
+% now let's get bin stds for non-guess trials
+
+%% Get standard deviations for non-guesses
+
+%[N,edgesGuess,binsGuess] = histcounts(guessrespAll);
+
+[N,edgesResp,binsResp] = histcounts(intRespTransformedAll,18);
+
+for ii = 1:size(N,2)
+  bin_std(:,ii) = std(intRespTransformedAll(binsResp==ii,:))';
+end
+
+[NAns,edgesAns,binsAns] = histcounts(intRespTransformedAll,edgesResp);
+
+binsAns = binsAns';
+
+for ii = 1:size(binsAns,2)
+   
+     binsAns(2,ii) =  bin_std(binsAns(1,ii));
+     
+end
+% binStds = figure(1);
+% plot(bin_std)
+% title('bin stds non-guess')
+% Marisize(12,1)
+%% Now let's plot
+
+
+% guessd = importdata('guessTrials.csv');
+% guessresp = guessd.data(:,2);
+% intd = importdata('mostTargetSize.csv');
+% intAns = intd.data(:,1);
+% intResp = intd.data(:,2);
+
+compFig = figure(2);
+subplot(4,1,1);
+hist(guessrespAll,18); %18 bins so 20 observations per bin
+colorBins = 0:20:360;
+xlim([-10,370]);
+% xticks(([10,20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, ...
+%  240, 260, 280, 300, 320, 340,350]));
+%xticklabels(tickLabels);
+title('histogram of guess responses');
+ylabel('Frequency', 'FontSize', 18); 
+Marisize(12,1)
+
+
+subplot(4,1,2);
+[similarityMatrix,simMatAvgs,colorMat] = SimilarityMatrixCM(0)
+C = []
+  simMatStds = [];
+    for ii = 1:height(similarityMatrix) ;
+      simMatStds(ii,:) = std(similarityMatrix(ii,:));
+        C(ii,:) = smoothdata(similarityMatrix(ii,:),'gaussian');
+
+      plot(similarityMatrix(ii,:),'Color',colorMat(ii,1,1:3),'Linewidth', 2)
+        hold on
+    end
+    xlim([0,360])
+    title('mean similarity rating standard deviations from Brady similarity task') 
+Marisize(12,1)
+
+subplot(4,1,3);
+%plot(simMatStds);
+XData = [1:18]
+for i = 1 : length(simMatStds) - 1
+  line('XData', XData(i:i+1), 'YData', simMatStds(i:i+1), 'Color',colorMat(i,1,1:3),'Linewidth',2);
+end
+
+Marisize(12,1);
+% for ii = 1:height(simMatStds) ;
+%   plot(simMatStds(ii,1),'Color',colorMat(ii,1,1:3),'Linewidth', 2)
+%   
+% end
+ title('std from Brady similarity task') 
+ xlim([0.5,18.5])
+xticks([]);
+%std(similarityMatrix(1,:))
+%plot(simMatStds)
+
+clearvars colorMat
+subplot(4,1,4);
+  for j=1:length(colorBins)-1
+    % Bins are 20 wide, so take the middle color (+10) to show
+    whichColor = colorBins(j)+10;   
+    colorMat(1,j,1:3) = colorsAll(whichColor,:)./255;
+    
+  end
+  
+  imshow(imresize(colorMat,[20 200],'nearest'));
+
+Marisize(12,1)
+  
+
+ %% Now interpolated similarity matrix
+% vq1 = interp1(simMatAvgs,similarityMatrix,-179:180,'spline');
+% 
+% %      for jj=1:length(colorBins2)-1
+% %     % Bins are 20 wide, so take the middle color (+10) to show
+% %     whichColor2 = colorBins2(jj)+10;   
+% %     colorMat2(1,jj,1:3) = colorsAll(whichColor2,:)./255;
+% %     
+% %      end
+%   
+% interpSim = figure(3);
+% subplot(3,1,1);
+% hist(guessrespAll,18); %18 bins so 20 observations per bin
+% colorBins = 0:20:360;
+% colorBins2 = 0:360;
+% xlim([0,360]);
+% xticks(([3,20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, ...
+%  240, 260, 280, 300, 320, 340,360]));
+% xticklabels(tickLabels);
+% title('histogram of guess responses');
+% ylabel('Frequency', 'FontSize', 18); 
+% Marisize(12,1)
+% 
+% 
+% subplot(3,1,2);
+% %[similarityMatrix,simMatAvgs,colorMat] = SimilarityMatrixCM(0)
+% C = []
+% clearvars ii 
+% 
+%     
+%    
+%   for ii = 1:360
+%       
+%       C(ii,:) = smoothdata(vq1(ii,:),'gaussian');
+% 
+%       plot(vq1(ii,:),'Color',colorsAll(ii,:)./255,'Linewidth', 2)
+% hold on
+% % subplot(3,1,3);
+% % plot(C(ii),'Color',colorMat(ii,1,1:3),'Linewidth', 2)
+% % gca
+% % xline(max(similarityMatrix(ii,:)))
+% % hold on
+% %line([mean(similarityMatrix(ii,:)) mean(similarityMatrix(ii,:))], [0 10]);
+% 
+% hold on
+%   end
+%   
+% %   subplot(3,1,3);
+% % 
+% %   imshow(imresize(colorMat2,[20 200],'nearest'));
+% % 
+% % sgtitle('Interpolated all')
+% hold off;
+% Marisize(12,1)
+%% Now model
+%%%%%%%% NEW 
+modelFig = figure(4);
+subplot(2,3,1);
+hist(guessrespAll,18); %18 bins so 20 observations per bin
+colorBins = 0:20:360;
+colorBins2 = 0:360;
+% colznum = (1:360)'
+% colz = horzcat(colznum,colz)
+% clearvars colznum 
+
+hold on;
+title('histogram of guess responses');
+xlim([0,360]);
+ylabel('Frequency', 'FontSize', 18); 
+Marisize(12,1)
+
+subplot(2,3,2);
+ylim([0,360]);
+xlim([0,360]);
+plot(intAnsAll, intRespAll, 'ko');
+ylim([0,360]);
+xlim([0,360]);
+Marisize(12,1)
+
+hold on;
+
+subplot(2,3,3);
+plot(intAnsAll, intRespTransformedAll, 'ko');
+Marisize(12,1)
+xlim([0,360]);
+Marisize(12,1)
+hold on;
+
+
+[Y0bw, Y0dens, Y0mesh, Y0cdf] = kde(guessrespAll);
+sig0N = std(guessrespAll, 1);
+mean0N = mean(guessrespAll);
+title('Behavioral responses on non-zero ms trials'); 
+xlabel('Feature value', 'FontSize', 18); 
+xlim([0,360]);
+ylabel('Behavioral response', 'FontSize', 18); 
+smoothwindowsize = 0.5; % try to vary this: this variable is used for smoothing (especially when the numbers of trials for guessing condition and for actual test trials are not balanced)
+
+% out = MLE_ModelFunc_V25_noncirc(intAns,intResp,1000,Y0dens,Y0mesh,smoothwindowsize);
+%out = MLE_ModelFunc_V25_power_V1(intAnsAll,intRespTransformedAll,1000,Y0dens,Y0mesh,sig0N,mean0N, smoothwindowsize);
+
+
+out = MLE_ModelFunc_V25_noncirc_V1(intAnsAll,intRespTransformedAll,1000,Y0dens,Y0mesh,smoothwindowsize);
+
+%gcf(modelFig)
+% result
+subplot(2,3,4); 
+hist(out.latent); 
+xlim([0 1]); 
+xlabel('Probability (Pint)', 'FontSize', 18); 
+title('histogram of latent (Pint)'); 
+Marisize(12,1)
+subplot(2,3,5);
+xlim([0,360]);
+nn_tmp = length(out.X);
+Zmat = out.latent; 
+colorcode = zeros(nn_tmp,3);
+colorcode(:,1)=Zmat;
+colorcode(:,2)=1-Zmat;
+sizecode = (abs(Zmat-0.5)+0.4)*24;
+scatter(out.X,out.Y,sizecode,colorcode, 'linewidth',1.4);
+Marisize(12,1)
+hold off
+Marisize(12,1)
+55555;
+out;
+title('Model'); 
+xlabel('Feature value', 'FontSize', 18); 
+ylabel('Behavioral response', 'FontSize', 18); 
+averagePint = out.Pm;
+
+
+%% compare our fits
+out = MLE_ModelFunc_V25_noncirc_V1(intAnsAll,intRespTransformedAll,1000,Y0dens,Y0mesh,smoothwindowsize);
+
+%gcf(modelFig)
+% result
+
+figure(5)
+subplot(2,2,1)
+nn_tmp = length(out.X);
+Zmat = out.latent; 
+colorcode = zeros(nn_tmp,3);
+colorcode(:,1)=Zmat;
+colorcode(:,2)=1-Zmat;
+sizecode = (abs(Zmat-0.5)+0.4)*24;
+scatter(out.X,out.Y,sizecode,colorcode, 'linewidth',1.4);
+hold on
+Marisize(12,1)
+55555;
+out;
+title('Model- constant sd'); 
+xlabel('Feature value', 'FontSize', 18); 
+ylabel('Behavioral response', 'FontSize', 18); 
+averagePint = out.Pm;
+hold on
+
+
+subplot(2,2,2); 
+hist(out.latent); 
+xlim([0 1]); 
+xlabel('Probability (Pint)', 'FontSize', 18); 
+title('histogram of latent (Pint)'); 
+Marisize(12,1)
+hold on
+%%
+gcf
+out = MLE_ModelFunc_V25_noncirc_V2_variableSD(intAnsAll,intRespTransformedAll,1000,Y0dens,Y0mesh,smoothwindowsize, binsAns);
+
+%gcf(modelFig)
+% result
+
+subplot(2,2,3)
+nn_tmp = length(out.X);
+Zmat = out.latent; 
+colorcode = zeros(nn_tmp,3);
+colorcode(:,1)=Zmat;
+colorcode(:,2)=1-Zmat;
+sizecode = (abs(Zmat-0.5)+0.4)*24;
+scatter(out.X,out.Y,sizecode,colorcode, 'linewidth',1.4);
+hold on
+
+% scatter(intRespAll',(intRespAll' + binsAns(2,:)),'b')
+% hold on
+% scatter(intRespAll',(intRespAll' - binsAns(2,:)),'b');
+
+Marisize(12,1)
+55555;
+out;
+title('Model- binned SD'); 
+xlabel('Feature value', 'FontSize', 18); 
+ylabel('Behavioral response', 'FontSize', 18); 
+averagePint = out.Pm;
+
+hold on
+
+subplot(2,2,4); 
+hist(out.latent); 
+xlim([0 1]); 
+xlabel('Probability (Pint)', 'FontSize', 18); 
+title('histogram of latent (Pint)'); 
+Marisize(12,1)
+
+%% Plot the kernel
+
+
+
+figure(6)
+subplot(2,1,1)
+
+histogram(guessrespAll)
+xlim([0,360]);
+xticks(([0,20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, ...
+    240, 260, 280, 300, 320, 340,360]));
+ xticklabels(tickLabels)  %360
+Marisize(12,1)
+subplot(2,1,2)
+
+plot(Y0mesh',Y0dens)
+title('xmesh,density')
+xticks(([0,20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, ...
+    240, 260, 280, 300, 320, 340,360]));
+ xticklabels(tickLabels)  %360
+Marisize(12,1)
+
+5555;
+
+%% latent
+
+figure(7)
+latent = out.latent;
+latent = smooth(latent,.05);
+plot(latent)
+
+figure(8)
+mass1 = out.mass1;
+mass1 = smooth(mass1,.05);
+plot(mass1,'r')
+
+hold on
+mass2 = out.mass2;
+%mass2 = smooth(mass2,.0000001)
+
+plot(mass2,'b')
+
+hold on
+title('mass 1/mass 2')
+legend
+Marisize(12,1)
+
+
+%% Figure 4- precision
+latents = horzcat(((out.X)'),latent);
+
+
+% 
+% 
+% figure(5)
+% subplot(2,1,1)
+% 
+% histogram(guessrespAll)
+% xlim([0,360]);
+% xticks(([0,20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, ...
+%     240, 260, 280, 300, 320, 340,360]));
+%  xticklabels(tickLabels)  %360
+% Marisize(12,1)
+% subplot(2,1,2)
+% plot(Y0mesh',Y0dens, colz, 'filled')
+% title('xmesh,density')
+% Marisize(12,1)
+% 
+% 5555;
+% 
+% PlotSampledFamiliarity(famValue, conf)
+% 
+% function PlotSampledFamiliarity(famValue, conf)
+%   scatter(conf.confusionX', famValue', ...
+%     zeros(size(conf.confusionX))+30, conf.cols, 'filled');
+%   set(gca, 'YLim', [-3 6], 'XLim', [-181 180], 'XTick', [], 'FontSize', 14);
+%   ylabel('Familiarity');
+% end
+
+

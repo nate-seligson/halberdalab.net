@@ -1,0 +1,486 @@
+
+Vision & Cognition Lab - Generic Debriefing Form------The Vision and Cognition Lab explores a variety of research questions. We're 
+interested in the limits of visual attention and visual working memory and how 
+these limits are affected by the structure of the information to be stored. We're 
+also interested in the internal noise with which the human mind represents 
+various input, such as approximate number. Among many, many other topics, 
+these are just a few examples. We also study language, multiple object tracking, 
+subitizing, the mental number line, and more. Typical experiments in the lab use 
+visual search, change detection, rapid parallel enumeration, and many other 
+paradigms. Given that cognitive psychology is still a relatively new field, the 
+experiment you just participated in will help us continue to answer the many 
+questions up for grabs. For example, how is number represented? And how do 
+we convert between those different representations? What is the unit of visual 
+working memory, if one exists? Thank you for participating in this experiment. If 
+you have any questions, comments, or concerns, you may contact us at any time.
+******
+GI-Yeul Bae - Limits in Visual Working Memory------Primary Investigator: Dr. Jonathan Flombaum (flombaum@jhu.edu)
+Experimenter: Gi Yeul Bae (freebird71@gmail.com)
+	
+It has been known that visual working memory is a capacity limited system in 
+which just so many objects can be stored. We can observe this limit in a variety 
+of laboratory tasks such as change detection task where one has to make a 
+comparison between what she/he remembers and what she/he sees now. In this 
+task, what researchers typical found is that performance declines as memory 
+load increases. Crucially, this is true even for two memory items compared to 
+one. Why is visual working memory so limited? Here, we ask specific questions 
+that must be answered in order to understand the limits in visual working 
+memory. 1) How do we see objects in the first place?, 2) What kinds of 
+information is stored in memory?, 3) How do we retrieve the stored information 
+and use them?, and 4) What kinds of mistakes do we make when we use 
+memory? The experiment you just participated in is designed to answer at least 
+one of these questions. We expect that answering these questions shed light on 
+our understating of the nature of visual working memory. If you want to know 
+this project in more details, feel free to contact us using contact information 
+above. 
+
+******
+Zheng Ma - Debriefing form of Attention Rhythm Experiment------Primary Investigator: Jonathan Flombaum. E-mail: flombaum@jhu.edu
+
+Selective attention allows us focus on some more important parts of the visual world. Previous studies have shown that people have the ability to select multiple stimuli at the same time. This study aims to ask the mechanism of the selection of two stimuli locations. Based on some previous studies, we hypothesized that attention may sample from multiple stimuli in a certain rhythm. In the first part of the experiment, we measured your threshold to detect a decrement in amplitude. This will help us to set the difficulty of the testing task at a certain level and be sensitive to our manipulation. Then in the second testing part, we tried to ëresetí your attention to the flashing white dots location. Then, by looking at your performance of detection at different time intervals before and after the flash, we will be able to see whether your performance fluctuate across time. If there is a fluctuation of performance, we can continue to look at the frequency of the rhythm.
+
+******
+Hee Yeon Im - Spatial working memory and perceptual sampling------This experiment was to investigate the nature of distortion and errors in human 
+responses in spatial memory tasks. We hypothesize that the distortion and any 
+error responses on spatial memory task trials comes from uncertainty 
+embedded in memory. By exploring the pattern of responses on multiple 
+different distorted images in perception task, we aim to explore the relationship 
+between human responses from memory task and perception task. In our 
+experiments, participants were asked to report locations of objects that were 
+presented in random locations of visual arrays. If you have any concerns or 
+questions on the experiment, please contact the experimenter, Hee Yeon Im, 
+heeyeon.im@jhu.edu. 
+
+******
+Hee Yeon Im - Cluster Experiment (2013)------This experiment was to explore how visual system organizes and groups 
+multiple items that are spatially intermixed on a visual array. In order to 
+investigate how fast and efficient this process is, we varied the exposure time 
+and measured how participantsí responses on the number 
+estimation/comparison task changes with varying exposure time. If you have 
+any concerns or questions on the experiment, please contact the experimenter, 
+Hee Yeon Im, heeyeon.im@jhu.edu. 
+
+******
+Zheng Ma - Subject Debriefing: Spatial resolution and Multiple object tracking ------We are all aware of the fact that our representation of the world is not very accurate. Besides, when we are asked to represent and track multiple things, we may make more errors. One part of the experiment was designed to measure your precision of representing spatial locations when objects are static and moving. We also manipulated the distance from the object to the fixation point, since previous studies have suggested that you will have the highest precision around the center of the fixation, and become less accurate as the stimuli go further. The other part of the experiment was designed to measure how many moving objects you can track at once. In this part, we also manipulate the value and direction of speed to see whether these factors can affect your tracking ability. More importantly, by combining results from these two parts together, we can see whether there is a relationship between your spatial precision and tracking ability. Meanwhile, we are also developing a computer model that is able to do the same task as human. By comparing the performance of computer and human, we will have a better understanding of the mechanism under spatial representation and tracking. 
+******
+Zheng Ma - MOT & Enumeration------Primary Investigator: Jonathan Flombaum. 
+E-mail: flombaum@jhu.edu
+
+We are all aware of the fact that we can only remember a limited number of items‚Äô position at once.  What‚Äôs more, when the items are moving, that comes to even harder. This experiment looks at the limits on tracking ability by identifying the kinds of errors people make.  Specifically, you may have noticed that as you tried to specify which ones were targets and keep tracking of them, you confused targets and non-targets, and that when you went to select targets at the end of a trial, you felt some, maybe a even a good amount, of uncertainty about your choices.  What‚Äôs more, you even do not know whether you have chosen the right number of targets in the first place, and even for the trials you were asked to type in the number of targets, you may fell uncertain about your answer. In this experiment, you were in control of how many targets to select, and our hypothesis was that in addition to selecting some non-targets, you would sometimes select the wrong number of total targets. By comparing your responses of the two reporting method, we can directly measure whether you have tracked the correct number of targets during a trial. This experiment is one in a series designed to figure out if and why we sometimes fail to represent the correct number of things. 
+
+******
+Zheng Ma - MOT_ASRF Debriefing------Selective attention allows us focus on some more important parts of the visual world. In the first task you did today, we look at the limits on tracking multiple moving targets while ignore similar distractors. Specifically, we are interested in whether people will track multiple moving objects in a parallel or serial way. Previous studies have shown that when a distractor gets to be very close to a target (we call it a ‚Äúcritical frame‚Äù here), their identities might be confused and thus causes an error. Therefore, in this experiment, we systematically manipulated the synchronization of the ‚Äúcritical frames‚Äù of the four targets in the four quadrants. The hypothesis is that if tracking is serial, then performance will be lower when the four ‚Äúcritical frames‚Äù happen at the same time. However, if tracking is a parallel process, then the difference in the time of ‚Äúcritical frames‚Äù will not bring any advantage in the performance.
+
+In the second task, we look at whether you can attend to a single static spatial location continuously, or use a sampling way.  In the first part of the task, we measured your threshold to detect a decrement in luminance. This will help us to set the difficulty of the testing task at a certain level and be sensitive to our manipulation. Then in the second testing part, we tried to measure your detecting sensitivity at different time point after the onset of the background noise.  If you could keep attention at the same level continuously, then different time interval should not affect your performance. However, if your performance is dependent on the time interval, then there might be some attention period for this task.
+
+******
+Zheng - ------
+******
+Zheng Ma - ATTFLASH Debriefing------Selective attention allows us focus on some more important parts of the visual world. Previous studies have shown that people have the ability to select multiple stimuli at the same time. This study aims to ask the mechanism of the selection of two stimuli locations. Based on some previous studies, we hypothesized that attention may sample from multiple stimuli in a certain rhythm. In the first part of the experiment, we measured your threshold to detect a decrement in luminance. This will help us to set the difficulty of the testing task at a certain level and be sensitive to our manipulation. Then in the second testing part, we specifically manipulated the degree of synchrony between the flashes on the left and right side. If attention can be allocated to two spatial locations at the same time, then the synchrony manipulation should not affect your performance. However, if there is an attention rhythm going back and forth between the two sides, your detecting performance should be the best in the totally out-of-phase condition. 
+******
+Mark Schurgin - Action Cursor------Thank you for your participation in this experiment. This experiment explores 
+the nature of how the human visual system integrates action mechanisms into 
+perception. The way in which you respond to a task may actually shape your 
+perception of that task. The experiment you just participated in is investigating 
+whether using a mouse to respond to the spatial location of a dot informs your 
+perception of where that dot was. If you have any questions about this 
+experiment, or wish to further discuss the cognitive science underlying this 
+experiment, please contact Mark Schurgin at maschurgin@jhu.edu. 
+******
+Mark Schurgin - Apparent Motion------Thank you for your participation in this experiment. This study investigates 
+object perception and long-term memory. Specifically, we are interested in 
+whether the way you see an object and encode it into memory affects later 
+retrieval of that object. During the first part of the study you saw objects moving 
+in different motion patterns and this may actually change the way you represent 
+that object in long-term memory. If you have any questions about this 
+experiment, or wish to further discuss the cognitive science underlying this 
+experiment, please contact Mark Schurgin at maschurgin@jhu.edu. 
+******
+Zheng Ma - Motion Perception and Crowding------Subject Debriefing: Motion Perception and Crowding 
+Primary Investigator: Jonathan Flombaum. E-mail: flombaum@jhu.edu
+
+In the literature of motion perception, it has been proposed that at least two 
+systems are involved. A low-level motion system is automatic, and probably 
+relies on computations of luminance change. On the other hand, a high-level 
+motion system requires the involvement of attention to process spatial locations, 
+and then compute the motion direction by position comparison. The current 
+study aims to investigate whether the perception of slow motion relies on both 
+low-level and high-level motion system. We used the four surrounding static 
+circles to produce a crowding effect to the central moving circle, which will 
+decrease peopleís visual spatial resolution and thus break down the high-level 
+attention-based comparison motion system. We hypothesized that the crowding 
+effect will affect peopleís performance on direction judgment, suggesting that 
+the high-level motion system plays an important role in slow smooth motion 
+perception.
+
+******
+Mark Schurgin - Visual Working Memory------Thank you for your participation in this experiment. This study investigates 
+object perception and visual working memory. Specifically, we are interested in 
+understanding the content and form of your working memory for objects. By 
+asking you whether the objects you just saw in the array were Old, Similar, or 
+New, we can better understand how you extract detailed information from the 
+display and make individual representations of the objects you saw. If you have 
+any questions about this experiment, or wish to further discuss the cognitive 
+science underlying this experiment, please contact Mark Schurgin at 
+maschurgin@jhu.edu. 
+******
+Zheng Ma - The effect of distractors on number estimation _ overlapping exp------Subject Debriefing: The effect of distractors on number estimation 
+Primary Investigator: Jonathan Flombaum. E-mail: flombaum@jhu.edu
+
+This experiment tries to investigate peopleís ability in number estimation. 
+Specifically, we are interested in whether the presence of distractor will affect 
+you ability in estimation. Whatís more, we also want to know whether the 
+organization of the targets and distractors will affect this ability. In one 
+condition, the targets and distractors are fully intermixed together. In the other 
+condition, they only have a minimum amount of overlap. We hypothesized that 
+distractors will make the estimation harder, and the more amount overlap 
+between targets and distractors, the worse your estimation will be.
+
+******
+Zheng Ma - Spatial resolution and apparent motion ------Subject Debriefing: Spatial resolution and apparent motion 
+Primary Investigator: Jonathan Flombaum. E-mail: flombaum@jhu.edu
+
+In the literature of motion perception, it has been proposed that at least two 
+systems are involved. A low-level motion system is automatic, and probably 
+relies on computations of luminance change. On the other hand, a high-level 
+motion system requires the involvement of attention to process spatial locations, 
+and then compute the motion direction by position comparison. The current 
+study aims to investigate whether the perception of apparent motion, where 
+there is no real smooth motion but we can still get a feeling of motion with 2 
+sequentially presented dots at near locations, involving the high-level system. 
+To do this, we first measure your resolution of the high-level spatial processing 
+system. Then, we present the apparent motion stimuli based on the measure of 
+your spatial resolution. We hypothesized that if the apparent motion stimuli 
+moved much smaller distance than your spatial system could handle, you will be 
+worse in the task. 
+
+******
+Gi Yeul Bae - Vernier Acuity------Primary Investigator: Dr. Jonathan Flombaum (flombaum@jhu.edu)
+Experimenter: Gi Yeul Bae (freebird71@gmail.com)
+	How do we judge whether three objects are co-linear? Vernier Acuity (VeA) 
+tasks measure the precision of co-linearity judgments, usually assumed to elicit 
+computations over spatial coordinates. But then why are horizontal alignment 
+errors larger for more vertically distant objects? We propose that co-linearity 
+judgments actually employ an angular computation. Observers compute the 
+angle formed by three objects, judging alignment when the angle is perceived to 
+be 180∞. A horizontal displacement effect then arises from trigonometry. We are 
+exploring this possibility using a variety of tasks. Please contact us if you have 
+any questions or comments regarding this task and/or broader aspects of VeA. 
+We are happy to discuss about that. 
+
+******
+Starry Zhong - Single Object Tracking------Subject Debriefing: Single Object Tracking
+Primary Investigator: Jonathan Flombaum. E-mail: flombaum@jhu.edu
+
+This study investigates people's ability in tracking 1 moving target among 
+multiple distractors. Specifically, we are interested in how peopleís performance 
+will differ depending on the speed of the moving objects. Furthermore, we are 
+also trying to build a computational model to simulate human performance. By 
+comparing modelís and humanís performance, we will be able to update our 
+knowledge of human tracking mechanism.
+
+******
+Mark Schurgin - Object Perception LONG------Thank you for your participation in this experiment. This study investigates 
+object perception and memory. Specifically, we are interested in whether the way 
+you see an object and encode it into memory affects how you remember that 
+object later. During the study you saw objects moving in different motion 
+patterns and this may actually change the way you represent that object when 
+you're then tested on it. If you have any questions about this experiment, or wish 
+to further discuss the cognitive science underlying this experiment, please 
+contact Mark Schurgin at maschurgin@jhu.edu. 
+******
+Feitong Yang - Memory Modulate Perception------Visual perception has been thought as an unconscious inference process of the 
+information the visual system has. Previous research focused on the information 
+of external physical world that need to be processed, and the flow of visual 
+information was always from visual perception to visual memory. The current 
+project is to look the other way round. We are interested in how the contents in 
+memory, either in working memory or long-term memory would affect our visual 
+perception. In this study, we used the dual task, which combining the change-
+detection task and a simple visual illusion perception task, to know how the 
+content held in working memory in each trial could affect or even determine the 
+visual illusion perception in between. If you have any questions, please contact 
+us via email above. Thank you very much for participating in this experiment.
+******
+Gergo Sastyin - Spatial Relation Words------In this study we examine the interface between cognition and 
+language; specifically we would like to know more about the 
+linguistic intuitions of native English speakers in regard 
+to spatial relation words such as ìaboveî or ìnext toî. Our 
+goal is to create heat maps based on the averaged results, 
+thus to visualize the native speakersí concepts of the 
+aforementioned spatial relations in the English language.
+
+Earlier studies used mainly grid-space to show the stimulus 
+and Likert scale (usually seven-point scale) to record 
+responses from participants; or attempted to fit the data to 
+a model based on attention and neuron activity patterns. 
+While most of these paradigms may have captured some basic 
+features of the investigated spatial relations, due to the 
+following limitations in their methodologies there is 
+definitely an arguable room for improvement in many aspects 
+of the experimental approach. Firstly, their stimuli were 
+static, strongly constrained in space and in the number of 
+possible combinations regarding the positions of the target 
+and reference objects. Secondly, the responses were also 
+recorded in a digital manner, which might be incompatible 
+with the actual spatial relation computations. Our 
+experiment design firmly addresses these problems by 
+creating a highly dynamic and interactive experience, which 
+is also less limited in space. Additionally, we use a dial 
+to record participant responses, which allows us to obtain 
+analog information about the ongoing processes.
+******
+Starry Zhong - Multiple Object Tracking General------Subject Debriefing: Multiple Object Tracking
+Primary Investigator: Jonathan Flombaum. E-mail: flombaum@jhu.edu
+
+This study investigates people's ability in tracking multiple moving targets 
+among multiple distractors. Specifically, we are interested in how peopleís 
+performance will differ depending on the speed and number of targets of the 
+moving objects. Furthermore, we are also trying to build a computational model 
+to simulate human performance. By comparing modelís and humanís 
+performance, we will be able to update our knowledge of human tracking 
+mechanism.
+******
+Starry Zhong - Number estimation task------This experiment was to measure how the visual system represents the global 
+information about the visual scene. Specifically, we are interested in exploring 
+how human participants estimate the number of individual items and the number 
+of groups of the items. If you have any concerns or questions on the experiment, 
+please contact the experimenter, Starry Zhong at szhong2@jhu.edu. 
+******
+Starry Zhong - Visual search experiment------This experiment was to investigate how human observers can search for and 
+locate (an) item(s) when a visual array is presented briefly. In order to examine 
+the time course of visual search and localization, we presented participants with 
+the visual arrays for varying durations. Based on the participantsí responses from 
+this experiment, we estimate the accuracy on visual search by using a 
+mathematical modeling procedure. If you have any concerns or questions about 
+the experiment, please contact the experimenter, Starry Zhong at 
+zsh696@gmail.com.
+******
+Zheng Ma - Working Memory Number Uncertainty------Subject Debriefing: Working Memory Change Detection
+Primary Investigator: Jonathan Flombaum. E-mail: flombaum@jhu.edu
+
+This study investigates people's short-term memory ability. More specifically, we 
+measured your ability to remember different colored objects over a brief interval. 
+Our first goal is to measure how many objects you can remember at most. 
+Moreover, we are also interested in whether you can notice a change in the 
+number of objects in the display. In some of the trials, instead of a color change, 
+a square will be removed or added in the display. By looking at your accuracy in 
+those trials, we will be able to know whether you know how many objects were 
+there in the first display.
+******
+Zheng Ma - Zheng Ma Working Memory Change Detection------Subject Debriefing: Working Memory Change Detection
+Primary Investigator: Jonathan Flombaum. E-mail: flombaum@jhu.edu
+
+This study investigates people's short-term memory ability. More specifically, we 
+measured your ability to remember different colored objects over a brief interval. 
+Our first goal is to measure how many objects you can remember at most. 
+Moreover, we are also interested in whether you can notice a change in the 
+number of objects in the display. In some of the trials, instead of a color change, 
+a square will be removed or added in the display. By looking at your accuracy in 
+those trials, we will be able to know whether you know how many objects were 
+there in the first display.
+
+******
+Feitong Yang - Statistical Learning and Attention------Primary Investigator: Dr. Jonathan Flombaum (flombaum@jhu.edu)
+Experimenter:  Feitong Yang (fyang24@jhu.edu)
+	Research has shown that people can implicitly extract the statistical 
+structures and statistical information in the outside world while not aware of 
+them. However, attention seems to play a role in learning. That it, only attended 
+structure can be learnt despite of the unawareness. We are trying to test whether 
+it is true across different conditions of manipulating attention: task-irrelevance, 
+spatial attention, and feature attention. Participants perform a task unrelated to 
+the structure hidden in the stream. They were tested to show whether they learnt 
+statistical structure of the stream or not. If you have any questions, please 
+contact us via email above. Thank you very much for participating in this 
+experiment. 
+Time: 25 min
+
+******
+Feitong Yang - Statistical Learning and awareness------Primary Investigator: Dr. Jonathan Flombaum (flombaum@jhu.edu)
+Experimenter:  Feitong Yang (fyang24@jhu.edu)
+	Research has shown that people can implicitly extract the statistical 
+structures and statistical information in the outside world while not aware of 
+them. A further question to ask is whether this learning can happen if people are 
+not aware of the stimuli at all. By using continuous flash suppression method, we 
+binocularly present either the figure stimulus or a continuous flash of Mondrian 
+figures of circles and rectangles.  By manipulating the contrast of these two 
+stimuli, participants would have different experiences of the awareness of the 
+figure. We are wondering whether statistical learning can happened without 
+aware of the existence of the figure stimuli. If you have any questions, please 
+contact us via email above. Thank you very much for participating in this 
+experiment.
+Time: 25 min
+
+******
+Zheng Ma - Motion Perception Three in One------Primary Investigator: Jonathan Flombaum. E-mail: flombaum@jhu.edu
+
+Thanks for participating in the experiments of the Vision Lab. Youíve 
+participated in three experiments today. The first experiment is interested in 
+understanding how the visual system processes motion stimuli. More 
+specifically, when you were trying to detect a central digit, the motion stimuli 
+presented in the peripheral were supposed to induce a ìmotion aftereffectî. 
+When you were finally presented with a static red dot, you would perceive as if 
+the red dot was moving, in the opposite direction to the original moving white 
+dot. 
+The third experiment is simply interested in how you represent and estimate 
+time intervals.
+The second experiment, surprisingly, is not interested in testing how we can 
+improve creativity. The finding that physical exercise will improve creativity is 
+true, but itís not our main interest here. In fact, we were trying to get a 
+measure of your walking speed, and want to see whether there is any 
+relationship between your walking speed and time perception.
+Hope youíve enjoyed the experiments today and you are welcome to come 
+back for many other experiments! Finally, we hope you will not tell anyone 
+else about this experiment, since they might also be participants of this 
+experiment. Thank you very much for your cooperation!
+******
+Zheng Ma - Time Perception and MOT------Subject Debriefing: Time Perception and Multiple Object Tracking
+Primary Investigator: Jonathan Flombaum. E-mail: flombaum@jhu.edu
+
+This study investigates people's ability in tracking multiple moving targets 
+among multiple distractors. Specifically, we are interested in how peopleís 
+performance will differ depending on the number of targets of the moving 
+objects. Furthermore, we are also trying to study the relationship between the 
+tracking task and the time estimation task. We want to know how these two tasks 
+can affect and relate to each other.
+
+******
+Zheng Ma - Time Perception ------Primary Investigator: Jonathan Flombaum. E-mail: flombaum@jhu.edu
+
+In this series of experiments, we are interested in how your subjective perception 
+of time duration could be affected by factors such as the distinctness of the 
+stimuli, the salience of the stimuli, or the predictability of the stimuli. For 
+example, will you perceive a stimuli longer than its objective duration, just 
+because it is the oddball of a repeating series? These research will help us 
+understand the nature and goal of human time perception, and may also provide 
+some implication to understand human consciousness.
+******
+Zheng Ma - Working Memory Change Detection ñ Orientation------Subject Debriefing: Working Memory Change Detection ñ Orientation
+Primary Investigator: Jonathan Flombaum. E-mail: flombaum@jhu.edu
+
+This study investigates people's short-term memory ability. More specifically, we 
+measured your ability to remember different orientated objects over a brief 
+interval. Our first goal is to measure how many objects you can remember at 
+most. Moreover, we are also interested in whether you can notice a change in the 
+number of objects in the display. In some of the trials, instead of an orientation 
+change, a bar will be removed or added in the display. By looking at your 
+accuracy in those trials, we will be able to know whether you know how many 
+objects were there in the first display.
+
+******
+Zheng Ma - Working Memory General (Zheng)------Thanks for participating in this experiment on human short-term memory 
+ability. In this series of experiments, we are generally interested in how stimuli 
+(e.g. colored squares, orientated bars) are encoded and stored in visual memory. 
+More importantly, we want to know whether different stimulus feature values 
+(e.g. different colors) would be represented in the mind differently. This will help 
+us know better of the mechanism of human visual memory.
+******
+Josh Langfus - Flicker Color Replication------The purpose of the current experiment is to establish the 
+Flicker Paradigm as a valid measure of visual working 
+memory (VWM) capacity.  Visual working memory is 
+conceptualized as a limited capacity storage mechanism that 
+is responsible for the retention and manipulation of visual 
+information, prior to such data being subjected to higher 
+cognitive processing. On average, people can store up to 4 
+items (e.g. colored squares) simultaneously in this system.  
+However, individual difference exists, such that some 
+people can store more items than other (i.e. you may be 
+able to store up to 6 items at once, whereas I can only 
+store a maximum of 2 items).  These individual differences 
+correlates with a variety of cognitive indices, and present 
+storage limitations in VWM storage as an important 
+bottleneck for higher cognitive processing.  
+Here, we used the Flicker paradigm to quantify individualís 
+VWM storage capacity. On each trial of this task, two 
+identical displays were continuously presented, with the 
+difference that one square continuously toggled between two 
+colors.  To find this target item, you had to store subsets 
+of the items into VWM, hold them across the masked 
+displays, and then compare them with the subsequent 
+display.  You presumably repeated this process until you 
+found the target item.  As such, how long it takes you to 
+find the target item (response time) can serve as a proxy 
+of the maximum number of items you were able to store in 
+VWM across each iteration of the looping displays.  For 
+example, if you have a storage capacity of 6 items and were 
+searching through a display consisting of 12, you would 
+find the target much quicker than somehow who could only 
+remember 2 items at a time.   In this experiment, we varied 
+how long each of the displays were shown for to determine 
+the parameters that are most suitable for running this type 
+of task.  The displays were presented for 300, 500, 700, 
+900, and 1100 ms each.  In previous work with gray scale 
+dots, we found that participants are able to reach their 
+maximum storage capacities with presentations of 700 ms.  
+Here, we sought to replicate these findings using colored 
+squares, to establish the reliability and validity of these 
+findings.  
+
+******
+Josh Langfus - Dotsapalooza!------The human visual system must extract information from an 
+extremely noisy world. One of the components of this amazing 
+system is Visual Attention, which the mind uses to select 
+objects in the world for later processing.  It turns out that 
+different people have differing capacities for visual 
+attention. In this experiment we measured your Visual 
+Attention performance by selecting groups of dots based on 
+color. You might have noticed that some of the trials were 
+easier than others ñ e.g. if the colors were very different, 
+you might have found it easier to select one of the groups 
+than the other. By understanding how features of the visual 
+stimuli (like color) influence Visual Attention, we can 
+better understand how humans pick out groups of objects in 
+the world and, ultimately, how we use our visual system to 
+make sense of what is around us. 
+
+
+******
+Josh Langfus - Blickets EN------English, and many other languages, distinguishes ìmass 
+wordsî and ìcount words.î For example, ìsandî and ìwaterî 
+are mass words; they refer to things we commonly regard 
+as having continuous quantity. Most people would accept 
+the sentence, ìDoes the bucket have more sand or more 
+water in it?î but not ìDoes the bucket have more sands or 
+more waters?î Likewise, count nouns like ìpennyî and 
+ìpebbleî refer to discrete objects. We can ask, ìDid 
+Sofia have more pennies or more pebbles in her pocket?î, 
+but it sounds strange to ask, ìDid Sofia have more penny 
+or more pebble?î.
+
+It turns out that the distinction between mass and count 
+is not merely linguistic. On tasks where we ask 
+participants to discriminate quantities, people are more 
+sensitive when we ask them to pay attention to the 
+surface area of the objects compared to when we ask them 
+to consider the number of objects. In this experiment, we 
+showed participants the exact same stimuli two times, 
+varying only whether they were asked about mass (area) or 
+count. In accordance with previous findings, we expect to 
+see more fine-tuned ratio discrimination in the mass 
+condition than in the count condition. Finding this 
+pattern would provide evidence that there are two 
+different cognitive systems at work in estimating 
+quantity: one sensitive to area, and another sensitive to 
+number. 
+
+Preliminary results suggest that this should be true 
+regardless of the participantís native language; 
+replications of this experiment are currently underway 
+with native Cantonese- and Spanish-speaking participants. 
+This is particularly interesting because some languages 
+(known as ìclassifier languagesî), such as Cantonese, do 
+not make an explicit mass/count distinction in their 
+vocabularies. Finding the same pattern of performance in 
+these people as in speakers of other languages would 
+provide strong evidence that humans tap into the same 
+cognitive representations of quantity when thinking about 
+mass and area, regardless of whether their language makes 
+this distinction clear. This would provide evidence 
+against the claim that a personís specific language 
+strongly influences the types of thoughts that person can 
+think (sometimes known as the Sapir-Whorf Hypothesis, or 
+Whorfianism). It also supports the idea that certain 
+kinds of knowledge are innate in all humans, since itís 
+not clear how else a person could acquire a conceptual 
+distinction between mass and count if there exists no way 
+to talk about it in their language.
+******

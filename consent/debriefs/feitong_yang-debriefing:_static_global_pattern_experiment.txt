@@ -1,0 +1,27 @@
+
+Feitong Yang - Debriefing: Static Global Pattern Experiment
+------
+Primary Investigator: Dr. Jonathan Flombaum (flombaum@jhu.edu)
+Experimenter:  Feitong Yang (fyang24@jhu.edu)
+How can we perceive a global pattern? It is an important question 
+because each neuron in our retina, as well as in our early visual cortex, 
+can only respond to a restricted region in the whole visual field. When 
+we only have local regional information, we may lose the big picture. 
+For example, in the story of blind men and an elephant, each blind man 
+can only perceive a restricted part of the elephant, and they as a group 
+can hardly form a correct concept of the elephant. Our visual system, in 
+contrast, can always figure out the global pattern even though neurons 
+in early processing can only see a part. How can our visual system 
+achieve this? What rules are involved in such computation? The first 
+goal of this study is to understand the integration of local information to 
+form a global perception.
+This study is also related to the representation format of the human 
+location perception. A different way of representing location information 
+may have different results in difficulties of perceiving a global pattern. In 
+what rule do we integrate dots into a pattern? What dot patterns are 
+easier to perceive, and why they are easier for us to detect? We use 
+Glass Patterns, a self-correlated random dot set, to construct different 
+global patterns. We aim to test on how well can participants perceive 
+different dot patterns in the presence of noise. 
+
+******

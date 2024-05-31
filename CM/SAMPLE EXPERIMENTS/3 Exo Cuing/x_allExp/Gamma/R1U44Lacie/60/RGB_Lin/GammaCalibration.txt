@@ -1,0 +1,16 @@
+
+
+	 ----------------------------------- 
+	|         Gamma calibration           |
+	 ----------------------------------- 
+
+	 Screen ID : 			R1U44Lacie
+	 Screen distance : 		60 cm
+	 Calibration type : 	RGB linearized
+	 Creation date : 		19-Feb-2014
+	 Creation time : 		14:38
+
+	 Max RED lum. : 		1.690000e+01
+	 Max GREEN lum. : 		65
+	 Max BLUE lum. : 		8.350000e+00
+	 Max GRAY lum. : 		8.840000e+01

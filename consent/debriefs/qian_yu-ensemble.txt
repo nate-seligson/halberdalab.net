@@ -1,0 +1,18 @@
+
+Qian Yu - Ensemble
+------
+Natural scenes are dense with information, however, this clutter is not 
+completely random. Instead, natural scenes are filled with similar or 
+redundant groups of objects, features, and textures. The visual system 
+is sensitive to these similarities in both natural (e.g., stand of trees, 
+crowd of faces) and artificial (e.g., car lot, bike rack) groups in the form 
+of ensemble or summary statistical information. We can extract 
+summary statistics along many dimensions, including the average hue 
+of the tree leaves, average facial expression of the bystanders, and 
+average speed of the cyclists.
+
+The way we perceive ensembles seems to be similar to how we 
+perceive a single object. In this series of experiments, we aim to 
+investigate whether we process ensembles as if they were single 
+objects. 
+******

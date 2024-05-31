@@ -1,0 +1,15 @@
+
+Feitong Yang - Statistical Learning
+------
+Research has shown that people can implicitly extract the statistical 
+structures and statistical information in the outside world while not aware 
+of them. The current project is to investigate how fast the learning happens 
+and how is the response pattern changing over the process of statistical 
+learning. Participants take an RSVP test repeatedly to indicate whether 
+they actually learned the structures. If you have any questions, please 
+contact us via email above. Thank you very much for participating in this 
+experiment.
+
+Time: 40-45 min
+
+******

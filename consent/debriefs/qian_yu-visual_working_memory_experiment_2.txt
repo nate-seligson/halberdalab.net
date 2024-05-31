@@ -1,0 +1,29 @@
+
+Qian Yu - Visual Working Memory Experiment 2
+------
+Is working memory simply the reactivation of perceptual 
+representations?  Decoding experiments with fMRI suggest that 
+perceptual areas maintain information about what we have seen in 
+working memory.  But is this activity the basis of visual working 
+memory itself?  If it is, then perceptual interference during maintenance 
+should impair our ability to remember.  
+
+We want to this prediction by measuring visual working memory 
+performance with and without interfering mask gratings, presented 
+during the memory delay at the same location as the to-be-
+remembered stimulus.  But the first step is to test whether the mask 
+gratings are indeed interfering, that is, can interfere with visual 
+perception.
+
+We reasoned that if visual working memory relies on early perceptual 
+substrates then exposure to conflicting masks that putatively activate 
+the same substrates should impair performance (relative to no-mask 
+trials).  In other words, there should be interference, between the 
+rapidly changing perceptual inputs and the perceptually maintained 
+memory representations at the same retinal location. 
+
+In this experiment, we predict that the mask condition and unmasked 
+condition do not differ in terms of task performance (accuracy). If we 
+do not see an effect of masks, it would support our hypothesis that our 
+visual working memory does not rely on perceptual reuse. 
+******

@@ -1,0 +1,16 @@
+
+
+	 ----------------------------------- 
+	|         Gamma calibration           |
+	 ----------------------------------- 
+
+	 Screen ID : 			R2106Sony
+	 Screen distance : 		60 cm
+	 Calibration type : 	GRAY linearized
+	 Creation date : 		17-Nov-2018
+	 Creation time : 		2:8
+
+	 Max RED lum. : 		3.830000e+01
+	 Max GREEN lum. : 		8.970000e+01
+	 Max BLUE lum. : 		1.470000e+01
+	 Max GRAY lum. : 		131

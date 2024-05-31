@@ -1,0 +1,387 @@
+<html><head>
+
+<script language="Javascript1.2">
+
+// (C) 2000 www.CodeLifter.com
+// http://www.codelifter.com
+// Free for all users, but leave in this  header
+
+// Set the message for the alert box
+am = "This function is disabled.";
+
+// do not edit below this line
+// ===========================
+bV  = parseInt(navigator.appVersion)
+bNS = navigator.appName=="Netscape"
+bIE = navigator.appName=="Microsoft Internet Explorer"
+
+function nrc(e) {
+   if (bNS && e.which > 1){
+      alert(am)
+      return false
+   } else if (bIE && (event.button >1)) {
+     alert(am)
+     return false;
+   }
+}
+
+document.onmousedown = nrc;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (bNS && bV<5) window.onmousedown = nrc;
+</script><!--- Write to log file ---><!--- include virtual="mm4/templates/viewToClipLog.asp" --->
+
+
+
+
+
+
+
+
+  <script language="Javascript">
+	<!-- //	 
+	function Popup(){
+	strURL = window.location.href
+	if(strURL.indexOf("showprefs") == -1) {
+	if(strURL.indexOf("?") == -1) {
+	
+	window.location.href=window.location.href+"?showprefs=1"
+	}
+	else
+	{
+	window.location.href=window.location.href+"&showprefs=1"
+	}
+	}
+	
+	}
+	self.name="main";
+	
+ 	 // -->
+ 	 
+ 	 
+ 	 function fnFind(channelAdmin) {
+	
+ 	 var windowprops = "width=380,height=400,location=no,toolbar=no,menubar=no,scrollbars=yes";
+ 	 var keywords = document.Find.Keywords.value;
+	 
+ 	 var url = "searchresults.asp?channelAdmin=" + channelAdmin + "&Keywords=" + keywords;
+	 
+ 	 if (keywords.length < 3) {
+ 		alert("Search expression is invalid and contains too few characters.");
+ 		return;
+ 		}
+ 	 else
+ 		{
+ 		window.open(url,"SearchResults",windowprops);
+ 		}
+ 	 }
+ </script><title>Tracking Your Team : Powered by Videodome Networks</title>
+ 
+ 
+
+
+
+
+<meta name="keywords" content="Tracking Your Team">
+ 
+<meta http-equiv="pragma" content="no-cache">
+
+<script language="javascript">
+function selectNext()
+{
+	document.SELECTION.submit();
+}
+
+function selectChannel()
+{
+	document.SETCHANNEL.submit();
+}
+
+function subscribe()
+{
+	document.SEARCH.method="post";
+	document.SEARCH.target="_top";
+	document.SEARCH.action="Subscribe/SendMail.asp";
+	document.SEARCH.submit();
+}
+
+function searchclear()
+{
+		if (document.SEARCH.email_from.value == ' Enter Email') document.SEARCH.email_from.value = '';
+}
+
+ function surfto(form) {
+        var myindex=form.select1.selectedIndex
+        if (form.select1.options[myindex].value != "0") {
+		var s = document.xchannelformx.s.value;
+		location=form.select1.options[myindex].value+"&s="+s;
+		}
+}
+</script>
+
+
+
+
+<script language="Javascript">
+
+<!-- Begin Time Calculator
+pageOpen = new Date();
+function bye() {
+pageClose = new Date();
+
+var starthours = pageOpen.getHours();
+var endhours = pageClose.getHours();
+
+if(endhours < starthours) {
+endhours = endhours + 23;
+}
+starttime = endhours*3600 + pageOpen.getMinutes()*60 + pageOpen.getSeconds()
+endtime = starthours*3600 + pageClose.getMinutes()*60 + pageClose.getSeconds()
+
+time = endtime - starttime
+
+
+var xloc = screen.width/2 - 5;
+var yloc = screen.height/2 - 5;
+var windowprops = "width=5,height=5,location=no,toolbar=no,menubar=no,scrollbars=no,screenX=" + xloc + ",screenY=" + yloc + ",left=" + xloc + ",top=" + yloc;
+window.open("/mm4/templates/calcviewtime.asp?ViewItemID=15688&ViewChapterID=&ViewChannelID=1064&ViewBitrate=350&ViewAdminID=988&ViewTime="+time,"calc",windowprops)
+self.focus();
+
+} 
+// End -->
+</script><link rel="STYLESHEET" type="text/css" href="twizardpopup_data/mainstyle.css"><style type="text/css">
+body 	{
+			background-color: black;
+			}
+
+.vhead  {
+	font-family : arial;
+	font-weight : bold;
+	font-size : 10pt;
+	color : black;
+}
+
+.vlabel  {
+	font-weight : bold;
+	font-family : arial;
+	font-size : 10pt;
+	color : black;
+}
+
+a, a:hover, a:link, a:visited, a:active {
+
+font-family : arial;
+font-size : 8pt;
+color : black;
+
+}
+
+.vdata {
+	background-color : white;
+	font-family : arial;
+	font-size : 8pt;
+	color : black;
+}
+
+.selectbox {
+
+background-color : white;
+	font-family : arial;
+	font-size : 8pt;
+	color : black;
+
+width : 150;
+}
+
+.inputbox {
+
+	background-color : white;
+	font-family : arial;
+	font-size : 8pt;
+	color : black;
+
+}
+
+.standardwidth {
+
+width : 150;
+}
+
+</style></head>
+
+<body onload="self.focus()" onunload="bye();" bgcolor="black"><form name="xchannelformx">
+<input name="s" value="905677379" type="hidden">
+</form>
+
+
+
+
+
+
+
+
+<!---
+''''''''''''''''''''''''''''''''''''''''''''' FUNCTIONS ''''''''''''''''''''''''''''''''
+
+function getBitrate()
+	'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+	'set bitrate 
+	if request.querystring("bitrate") <>"" then
+		getBitRate = request.querystring("bitrate")
+		session("bitrate") = getBitRate
+		RemoveDate = MonthName(Month(Date())) & " " & Day(Date()) & ", " & (Year(Date()) - 1)
+		ExpireDate = MonthName(Month(Date())) & " " & Day(Date()) & ", " & (Year(Date()) + 1)
+	
+		Response.Cookies("Bitrate") = ""
+		Response.Cookies("Bitrate").Expires = RemoveDate
+		Response.Cookies("Bitrate").Path="/"
+		Response.Cookies("Bitrate") = strBitrate
+		Response.Cookies("Bitrate").Expires = ExpireDate
+		Response.Cookies("Bitrate").Path="/"
+		
+		
+	else
+		getBitrate = Request.COOKIES("Bitrate")
+	end if
+	
+	IF getBitrate="" THEN 
+		getBitrate = "28"
+	END IF
+	
+	session("Bitrate") = getBitrate
+	
+end function
+
+function getFormat()
+if request.Querystring("format") <> "" then
+		getFormat = request.querystring("format")
+		session("Format") = getFormat
+		RemoveDate = MonthName(Month(Date())) & " " & Day(Date()) & ", " & (Year(Date()) - 1)
+		ExpireDate = MonthName(Month(Date())) & " " & Day(Date()) & ", " & (Year(Date()) + 1)
+		
+		Response.Cookies("Format") = ""
+		Response.Cookies("Format").Expires = RemoveDate
+		Response.Cookies("Format").Path="/"
+		Response.Cookies("Format") = getFormat
+		Response.Cookies("Format").Expires = ExpireDate
+		Response.Cookies("Format").Path="/"
+	else
+		getFormat = Request.COOKIES("Format")
+		if right(getFormat,3) = "ASF" then getFormat="ASF" end if
+		if right(getFormat,3) = "RMA" then getFormat="RMA" end if
+		if right(getFormat,3) = "QIC" then getFormat="QIC" end if
+	end if
+	
+	IF getFormat="" THEN
+	   getFormat = "ASF"
+	END IF
+	session("Format") = getFormat
+end function --->
+
+<!---title>Powered by Videodome Networks</title--->
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+<table align="center" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td>
+	 
+	<table align="center" bgcolor="black" border="0" cellpadding="0" width="340">
+	
+	<tbody><tr><td align="left">
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="345">
+
+<tbody><tr>
+	<td align="left" bgcolor="black"><img src="twizardpopup_data/transparent.gif" name="vleft" border="0" height="265" width="10"></td>
+	<td align="center" bgcolor="black" width="320">
+		<script language="javascript">
+			if(document.xchannelformx) {
+			document.xchannelformx.s.value="905677379"
+			}
+			</script>
+		
+		  <script language="javascript">
+						
+						function fnPlay() {
+						alert("Not available for selected player.  Please use embedded control bar!");
+						return false;
+						}
+						
+						function fnStop() {
+						alert("Not available for selected player.  Please use embedded control bar!");
+						return false;
+						}
+						
+						function fnPause() {
+						alert("Not available for selected player.  Please use embedded control bar!");
+						return false;
+						}
+						
+						function fnReverse() {
+						alert("Not available for selected player.  Please use embedded control bar!");
+						return false;
+						}
+						
+						function fnForward(){
+						alert("Not available for selected player.  Please use embedded control bar!");
+						return false;
+						}
+						
+						function fnMute(){
+						alert("Not available for selected player.  Please use embedded control bar!");
+						return false;
+						}
+						
+						function fnFullScreen() {
+						alert("Not available for selected player.  Please use embedded control bar!");
+						return false;
+						}
+						
+						</script>
+		  <embed name="quickvid" pluginspage="http://www.apple.com/quicktime/download" src="twizardpopup_data/3688386_IS218_trackingyourteam_300.mov" autoplay="TRUE" controller="True" scale="tofit" height="255" width="320">
+		   
+		  
+					<!--- Write to log file --->
+				</td>
+	<td align="right" bgcolor="black"><img src="twizardpopup_data/transparent.gif" name="vright" border="0" height="265" width="10"></td>
+</tr>
+
+</tbody></table></td></tr>
+	
+	<tr><td align="right"></td></tr>
+	<!--- only show preferences and full screen if enabled --->
+	
+	<!--- End preferences and full screen --->
+	<tr><td>&nbsp;</td></tr>
+	
+	
+	
+		<!--- Company Information --->
+				
+				
+			<!--- End Company Information --->
+	
+	
+	
+	<!--- More Info Section --->
+				
+				
+				<!--- End More Info Section --->
+	<tr><td>&nbsp;</td></tr>
+		
+	</tbody></table>
+	 
+
+	
+</td></tr>
+</tbody></table>
+</body></html>

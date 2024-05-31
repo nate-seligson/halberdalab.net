@@ -1,0 +1,385 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+
+library(ggplot2)
+library(plotly)
+library(broom)
+library(car)
+library(olsrr)
+library(ppcor)
+
+
+rm(list = ls()) 
+
+
+```
+
+
+```{r}
+
+library(readxl)
+allDataFLSearch217 <- read_excel("/Users/carolinemyers/Desktop/CM_Experiments/IN_PROGRESS/fire/FlSearchV2/FLSearch_v2.1.7_PREREG/analysis/allDataFLSearch217.xlsx")
+
+
+data <- data.frame(allDataFLSearch217)
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+
+```{r}
+
+## Gives count, mean, standard deviation, standard error of the mean, and confidence interval (default 95%).
+##   data: a data frame.
+##   measurevar: the name of a column that contains the variable to be summariezed
+##   groupvars: a vector containing names of columns that contain grouping variables
+##   na.rm: a boolean that indicates whether to ignore NA's
+##   conf.interval: the percent range of the confidence interval (default is 95%)
+summarySE <- function(data=NULL, measurevar, groupvars=NULL, na.rm=FALSE,
+                      conf.interval=.95, .drop=TRUE) {
+    library(plyr)
+
+    # New version of length which can handle NA's: if na.rm==T, don't count them
+    length2 <- function (x, na.rm=FALSE) {
+        if (na.rm) sum(!is.na(x))
+        else       length(x)
+    }
+
+    # This does the summary. For each group's data frame, return a vector with
+    # N, mean, and sd
+    datac <- ddply(data, groupvars, .drop=.drop,
+      .fun = function(xx, col) {
+        c(N    = length2(xx[[col]], na.rm=na.rm),
+          mean = mean   (xx[[col]], na.rm=na.rm),
+          sd   = sd     (xx[[col]], na.rm=na.rm)
+        )
+      },
+      measurevar
+    )
+
+    # Rename the "mean" column    
+    datac <- rename(datac, c("mean" = measurevar))
+
+    datac$se <- datac$sd / sqrt(datac$N)  # Calculate standard error of the mean
+
+    # Confidence interval multiplier for standard error
+    # Calculate t-statistic for confidence interval: 
+    # e.g., if conf.interval is .95, use .975 (above/below), and use df=N-1
+    ciMult <- qt(conf.interval/2 + .5, datac$N-1)
+    datac$ci <- datac$se * ciMult
+
+    return(datac)
+}
+
+
+
+## Summarizes data, handling within-subjects variables by removing inter-subject variability.
+## It will still work if there are no within-S variables.
+## Gives count, un-normed mean, normed mean (with same between-group mean),
+##   standard deviation, standard error of the mean, and confidence interval.
+## If there are within-subject variables, calculate adjusted values using method from Morey (2008).
+##   data: a data frame.
+##   measurevar: the name of a column that contains the variable to be summariezed
+##   betweenvars: a vector containing names of columns that are between-subjects variables
+##   withinvars: a vector containing names of columns that are within-subjects variables
+##   idvar: the name of a column that identifies each subject (or matched subjects)
+##   na.rm: a boolean that indicates whether to ignore NA's
+##   conf.interval: the percent range of the confidence interval (default is 95%)
+summarySEwithin <- function(data=NULL, measurevar, betweenvars=NULL, withinvars=NULL,
+                            idvar=NULL, na.rm=FALSE, conf.interval=.95, .drop=TRUE) {
+
+  # Ensure that the betweenvars and withinvars are factors
+  factorvars <- vapply(data[, c(betweenvars, withinvars), drop=FALSE],
+    FUN=is.factor, FUN.VALUE=logical(1))
+
+  if (!all(factorvars)) {
+    nonfactorvars <- names(factorvars)[!factorvars]
+    message("Automatically converting the following non-factors to factors: ",
+            paste(nonfactorvars, collapse = ", "))
+    data[nonfactorvars] <- lapply(data[nonfactorvars], factor)
+  }
+
+  # Get the means from the un-normed data
+  datac <- summarySE(data, measurevar, groupvars=c(betweenvars, withinvars),
+                     na.rm=na.rm, conf.interval=conf.interval, .drop=.drop)
+
+  # Drop all the unused columns (these will be calculated with normed data)
+  datac$sd <- NULL
+  datac$se <- NULL
+  datac$ci <- NULL
+
+  # Norm each subject's data
+  ndata <- normDataWithin(data, idvar, measurevar, betweenvars, na.rm, .drop=.drop)
+
+  # This is the name of the new column
+  measurevar_n <- paste(measurevar, "_norm", sep="")
+
+  # Collapse the normed data - now we can treat between and within vars the same
+  ndatac <- summarySE(ndata, measurevar_n, groupvars=c(betweenvars, withinvars),
+                      na.rm=na.rm, conf.interval=conf.interval, .drop=.drop)
+
+  # Apply correction from Morey (2008) to the standard error and confidence interval
+  #  Get the product of the number of conditions of within-S variables
+  nWithinGroups    <- prod(vapply(ndatac[,withinvars, drop=FALSE], FUN=nlevels,
+                           FUN.VALUE=numeric(1)))
+  correctionFactor <- sqrt( nWithinGroups / (nWithinGroups-1) )
+
+  # Apply the correction factor
+  ndatac$sd <- ndatac$sd * correctionFactor
+  ndatac$se <- ndatac$se * correctionFactor
+  ndatac$ci <- ndatac$ci * correctionFactor
+
+  # Combine the un-normed means with the normed results
+  merge(datac, ndatac)
+}
+
+
+
+
+## Norms the data within specified groups in a data frame; it normalizes each
+## subject (identified by idvar) so that they have the same mean, within each group
+## specified by betweenvars.
+##   data: a data frame.
+##   idvar: the name of a column that identifies each subject (or matched subjects)
+##   measurevar: the name of a column that contains the variable to be summariezed
+##   betweenvars: a vector containing names of columns that are between-subjects variables
+##   na.rm: a boolean that indicates whether to ignore NA's
+normDataWithin <- function(data=NULL, idvar, measurevar, betweenvars=NULL,
+                           na.rm=FALSE, .drop=TRUE) {
+    library(plyr)
+
+    # Measure var on left, idvar + between vars on right of formula.
+    data.subjMean <- ddply(data, c(idvar, betweenvars), .drop=.drop,
+     .fun = function(xx, col, na.rm) {
+        c(subjMean = mean(xx[,col], na.rm=na.rm))
+      },
+      measurevar,
+      na.rm
+    )
+
+    # Put the subject means with original data
+    data <- merge(data, data.subjMean)
+
+    # Get the normalized data in a new column
+    measureNormedVar <- paste(measurevar, "_norm", sep="")
+    data[,measureNormedVar] <- data[,measurevar] - data[,"subjMean"] +
+                               mean(data[,measurevar], na.rm=na.rm)
+
+    # Remove this subject mean column
+    data$subjMean <- NULL
+
+    return(data)
+}
+```
+
+
+```{r}
+
+
+
+
+
+
+
+
+data_4_wc <- summarySEwithin(data_4, measurevar="value", withinvars="condition",
+                        idvar="SubjectID", na.rm=FALSE, conf.interval=.95)
+
+
+data_4_wc
+
+library(ggplot2)
+# Make the graph with the 95% confidence interval
+ggplot(data_4_wc, aes(x=condition, y=value, group=1)) +
+    geom_line() +
+    geom_errorbar(width=.1, aes(ymin=value-ci, ymax=value+ci)) +
+    geom_point(Orientation=21, size=3, fill="white")
+  
+
+  
+
+``` 
+
+```{r}
+rm(data_long)
+# Convert it to long format
+library(reshape2)
+data_long <- melt(data=data, id.var="SubjectID",
+                  measure.vars=c("TargetUpRT4", "TargetUpRT5", "TargetUpRT6", "TargetUpRT7", "TargetUpRT8",
+                                "TargetDownRT4", "TargetDownRT5","TargetDownRT6","TargetDownRT7","TargetDownRT8"),
+                  variable.name="Condition")
+names(data_long)[names(data_long)=="value"] <- "RT"
+
+# Split Condition column into Orientation and SetSize
+
+# Up or down
+data_long$Orientation <- NA
+data_long$Orientation[grepl("^TargetUp",  data_long$Condition)] <- "Target Burns Up"
+data_long$Orientation[grepl("^TargetDown", data_long$Condition)] <- "Target Burns Down"
+data_long$Orientation <- factor(data_long$Orientation)
+
+
+# Set size
+data_long$SetSize <- NA
+data_long$SetSize[grepl("RT4$",  data_long$Condition)] <- "RT4"
+data_long$SetSize[grepl("RT5$",  data_long$Condition)] <- "RT5"
+data_long$SetSize[grepl("RT6$",  data_long$Condition)] <- "RT6"
+data_long$SetSize[grepl("RT7$",  data_long$Condition)] <- "RT7"
+data_long$SetSize[grepl("RT8$", data_long$Condition)] <- "RT8"
+data_long$SetSize <- factor(data_long$SetSize, levels=c("RT4","RT5","RT6","RT7","RT8"))
+
+# Remove the Condition column now
+data_long$Condition <- NULL
+
+# Look at first few rows 
+head(data_long)
+
+
+
+
+```
+
+```{r}
+library(dplyr)
+datac <- summarySEwithin(data_long, measurevar="RT", withinvars=c("SetSize","Orientation"), idvar="SubjectID")
+datac
+
+library(ggplot2)
+ggplot(datac, aes(x= SetSize, y=RT, fill=Orientation)) +
+    geom_bar(position=position_dodge(.9), colour="black", stat="identity") +
+    geom_errorbar(position=position_dodge(.9), width=.25, aes(ymin=RT-ci, ymax=RT+ci)) +
+   # coord_cartesian(ylim=c(40,46)) +
+ # ylim=c(ymin, ymax) + 
+  scale_fill_manual(values=c("#CCCCCC","#FFFFFF")) +
+  #  scale_y_continuous(breaks=seq(1:100)) +
+    theme_bw() 
+    #geom_hline(yintercept=38) 
+
+an2 <- aov(RT ~ (SetSize * Orientation) + Error(SubjectID/(SetSize * Orientation)), data_long)
+
+summary(an2)
+
+library(rstatix)
+
+res.aov <- anova_test(
+  data = data_long, dv = RT, wid = SubjectID,
+  within = c(SetSize, Orientation)
+  )
+get_anova_table(res.aov)
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+## Paired all, mean of median RTs for each sub
+AllTargetUp <- subset(data_long, Orientation == "Target Burns Up")
+AllTargetDown <- subset(data_long, Orientation == "Target Burns Down")
+
+library(reshape2)
+
+
+rm(data_long)
+# Convert it to long format
+library(reshape2)
+data_paired <- melt(data=data, id.var="SubjectID",
+                  measure.vars=c("TargetDownCorrectMeanRT", "TargetUpMeanCorrectRT"),
+                  variable.name="PairedCondition")
+names(data_paired)[names(data_paired)=="value"] <- "RT"
+
+
+
+#library("dplyr")
+#group_by(data_long, Orientation) %>%
+#  summarise(
+#    count = n(),
+#    mean = mean(value, na.rm = TRUE),
+#    sd = sd(value, na.rm = TRUE)
+  #)
+
+
+# Subset weight data before treatment
+targetUpPair <- subset(data_paired,  PairedCondition == "TargetUpMeanCorrectRT", RT,
+                 drop = TRUE)
+# subset weight data after treatment
+targetDownPair <- subset(data_paired,  PairedCondition == "TargetDownCorrectMeanRT", RT,
+                 drop = TRUE)
+# Plot paired data
+
+#install.packages("PairedData")
+library(PairedData)
+pd <- paired(targetUpPair, targetDownPair)
+plot(pd, type = "profile") + theme_bw()
+
+
+t.test(targetUpPair, targetDownPair, paired = TRUE, alternative = "two.sided")
+```
+
+```{r}
+
+AllTargetUp <- subset(data_long, Orientation == "Target Burns Up")
+AllTargetDown <- subset(data_long, Orientation == "Target Burns Down")
+
+
+#PAIRED ALL
+
+
+#install.packages("reshape2")
+
+library(reshape2)
+
+
+rm(data_long)
+# Convert it to long format
+library(reshape2)
+data_paired <- melt(data=data, id.var="SubjectID",
+                  measure.vars=c("trueMedianRT_Correct_TP_UP", "trueMedianRT_Correct_TP_DOWN"),
+                  variable.name="PairedCondition")
+names(data_paired)[names(data_paired)=="value"] <- "RT"
+
+
+
+#library("dplyr")
+#group_by(data_long, Orientation) %>%
+#  summarise(
+#    count = n(),
+#    mean = mean(value, na.rm = TRUE),
+#    sd = sd(value, na.rm = TRUE)
+  #)
+
+
+# Subset weight data before treatment
+targetUpPair <- subset(data_paired,  PairedCondition == "trueMedianRT_Correct_TP_UP", RT,
+                 drop = TRUE)
+# subset weight data after treatment
+targetDownPair <- subset(data_paired,  PairedCondition == "trueMedianRT_Correct_TP_DOWN", RT,
+                 drop = TRUE)
+# Plot paired data
+
+#install.packages("PairedData")
+library(PairedData)
+pd <- paired(targetUpPair, targetDownPair)
+plot(pd, type = "profile") + theme_bw()
+
+
+mean(targetUpPair)
+t.test(targetUpPair, targetDownPair, paired = TRUE, alternative = "two.sided")
+
+```

@@ -1,0 +1,18 @@
+
+Shanmukha Aditya Upadhyayula - Debriefing form for visual spatial noise measurement experiment
+------
+Primary investigator : Jonathan Flombaum. Email : flombaum@jhu.edu. Our visual 
+system is constrained by the non-uniform resolution in our retinas. As a result, our 
+perception of the world might be noisier in the peripheral vision. This plays a 
+crucial role in selectively attending to the stimuli in the real world. In spite of this 
+limitation, we are able to select multiple stimuli at the same time. Recent work from 
+our lab has suggested that this ability of ours to simultaneously select multiple 
+items might be constrained by the visual spatial noise of our retinas. In this 
+experiment, we attempt to mathematically formulate this spatial noise. We do this 
+by asking you to fixate in the centre of the screen, and make a brightness 
+judgement between dot pairs that are presented anywhere in the periphery. Our 
+hypothesis is that the accuracy of the judgements should vary as a function of the 
+size of the dots, and the distance at which these dots are presented. We then use 
+these accuracy values to fit in mathematical models that then describe the spatial 
+noise profile for each individual.
+******

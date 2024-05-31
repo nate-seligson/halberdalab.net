@@ -1,0 +1,255 @@
+BODY
+{
+    BACKGROUND-COLOR: #ecf4fc;
+    COLOR: #000000;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 60%;
+    MARGIN-LEFT: 0px;
+	margin-top: 0px;
+}
+SELECT.blue
+{
+    BACKGROUND-COLOR: #ecf4fc;
+    FONT-SIZE: 9pt
+}
+
+input.button {
+  	BACKGROUND-COLOR: #2d5377;
+    FONT-WEIGHT: bold;
+	font-size : 8pt;
+	COLOR: white;
+
+}
+INPUT.clsButton
+{
+    BACKGROUND-COLOR: navy;
+    FONT-SIZE: 75%;
+    FONT-WEIGHT: bold;
+    WIDTH: 14em;
+	COLOR: white;
+}
+INPUT.clsButton2
+{
+    BACKGROUND-COLOR: navy;
+    FONT-SIZE: 75%;
+    FONT-WEIGHT: bold;
+    WIDTH: 13em;
+	color: white;
+}
+P
+{
+    MARGIN-BOTTOM: 5pt;
+    MARGIN-TOP: 5pt
+}
+HR
+{
+    COLOR: blue
+}
+A
+{
+    TEXT-DECORATION: underline
+}
+A:visited
+{
+    COLOR: navy
+}
+A:link
+{
+    COLOR: navy
+}
+A:hover
+{
+    COLOR: orange;
+    TEXT-DECORATION: underline
+}
+A.alt
+{
+    TEXT-DECORATION: underline
+	COLOR: FFFFCC
+}
+A.alt:visited
+{
+    COLOR: FFFFCC
+}
+A.alt:link
+{
+    COLOR: FFFFCC
+}
+A.alt:hover
+{
+    COLOR: orange;
+    TEXT-DECORATION: underline
+}
+
+
+A.awhite
+{
+    TEXT-DECORATION: underline;
+	color: white;
+	font-size : white;
+}
+A.awhite:visited
+{
+	 TEXT-DECORATION: underline;
+    COLOR: white;
+	FONT-SIZE: 9pt;
+}
+A.awhite:link
+{
+ TEXT-DECORATION: underline;
+    COLOR: white;
+	FONT-SIZE: 9pt;
+}
+A.awhite:hover
+{
+    COLOR: orange;
+    TEXT-DECORATION: underline;
+	FONT-SIZE: 9pt;
+}
+
+
+.awhite {
+color: white;
+}
+
+A.help
+{
+    TEXT-DECORATION: underline;
+	COLOR: navy;
+	FONT-SIZE: 9pt;
+}
+A.help:visited
+{
+	TEXT-DECORATION: underline;
+    COLOR: navy;
+	FONT-SIZE: 9pt;
+}
+A.help:link
+{
+	TEXT-DECORATION: underline;
+    COLOR: navy;
+	FONT-SIZE: 9pt;
+}
+A.help:hover
+{
+    COLOR: orange;
+    TEXT-DECORATION: underline;
+	FONT-SIZE: 9pt;
+}
+
+TD
+{
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 9pt;
+	color : white;
+	
+}
+
+TD.help
+{
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 9pt;
+	color : black;
+	
+}
+
+TH
+{
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    FONT-SIZE: 9pt;
+    FONT-WEIGHT: bold;
+    TEXT-ALIGN: left
+}
+INPUT.bluebutton
+{
+    BACKGROUND-COLOR: navy;
+    COLOR: white;
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 8pt;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none;
+    WIDTH: 10em;
+}
+INPUT.smallbutton
+{
+    BACKGROUND-COLOR: navy;
+    COLOR: white;
+    FONT-FAMILY: Verdana, Arial;
+    FONT-SIZE: 7pt;
+    FONT-WEIGHT: bold;
+    TEXT-DECORATION: none;
+	 WIDTH: 8em;
+}
+.center
+{
+    TEXT-ALIGN: center
+}
+.label
+{
+    FONT-SIZE: 8pt;
+    FONT-WEIGHT: bold;
+	color : white;
+	
+}
+.label2
+{
+    COLOR: white;
+    FONT-SIZE: 9pt;
+    FONT-WEIGHT: bold
+}
+.head
+{
+    FONT-SIZE: 10pt;
+	FONT-FAMILY: verdana;
+    FONT-WEIGHT: bold;
+	color : FFFFCC;
+}
+
+.headu
+
+{
+	FONT-SIZE: 10pt;
+	FONT-FAMILY: verdana;
+    FONT-WEIGHT: bold;
+	color : FFFFCC;
+	text-decoration : underline;
+}
+.help {
+	font-size: 8pt;
+	COLOR: black;
+
+}
+.bighead
+{
+    COLOR: navy;
+    FONT-FAMILY: tahoma;
+    FONT-SIZE: 14pt;
+    FONT-WEIGHT: bold
+}
+.small
+{
+    COLOR: black;
+    FONT-SIZE: 7pt
+}
+
+table.colored {
+background-color: #336699 ;
+}
+
+table.help {
+background-color: #CCCCCC;
+}
+
+.title {
+
+font-size : 18pt;
+font-family : microsoft sans serif;
+font-weight : bold;
+color : #2d5377;
+
+
+}
+
+.tiny { font-size : 7pt; }
+
+.navy { color : navy;)

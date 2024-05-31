@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>
+CDF
+</title>
+<link href="default.css"
+		 rel="stylesheet"
+		 type="text/css" />
+
+<script language="JavaScript" src="slider.js" ></script>
+<script language="javascript" type="text/javascript" src="flot/jquery.js"></script>
+<script language="javascript" type="text/javascript" src="flot/jquery.flot.js"></script>
+</head>
+
+<body>
+
+<table border="0">
+<tr>
+<td>Cumulative<p/>Distribution<p/>Function<p/>(%)</td>
+<td><div id="placeholder" style="width:600px;height:300px;"></div></td>
+</tr>
+<tr>
+<td></td>
+<td>
+	<table width="*" border="0" align="center" valign="middle">
+	<tr> 
+          <td>
+		  x
+          </td>
+	</tr>
+	</table>
+</td>
+</tr>
+</table> 	
+
+
+<div class="carpe_horizontal_slider_track">
+    <div class="carpe_slider_slit">&nbsp;</div>
+    <div class="carpe_slider"
+        id="your_slider_id"
+        orientation="horizontal"
+        distance="100"
+        display="displayId"
+        style="left: 0px;">&nbsp;
+	</div>
+</div>
+<div class="carpe_slider_display_holder" >
+    <input class="carpe_slider_display"
+        id="displayId"
+        name="your_var_name"
+        type="text"
+        from="0"
+        to="100"
+        valuecount="101"
+        value="0"
+        typelock="off" />
+</div>
+&nbsp;<p/>
+
+<table border="0">
+<tr>
+<td>Gaussian<p/>Distribution<p/>Function<p/>(%)</td>
+<td><div id="gaussianholder" style="width:600px;height:300px;"></div></td>
+</tr>
+<tr>
+<td></td>
+<td>
+	<table width="*" border="0" align="center" valign="middle">
+	<tr> 
+          <td>
+		  x
+          </td>
+	</tr>
+	</table>
+</td>
+</tr>
+</table> 	
+
+
+</body>
+</html>

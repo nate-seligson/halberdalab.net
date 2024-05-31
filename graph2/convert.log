@@ -1,0 +1,701 @@
+[Sun, 04 Dec 2011 16:24:48 -0800] 
+40 incoming frames, file id: animation00010100000000.gif, folder name: img911071Output00010100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 0
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 16:24:50 -0800] 
+[Sun, 04 Dec 2011 16:24:58 -0800] 
+30 incoming frames, file id: animation00010100000000.gif, folder name: img911071Output00010100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 0
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 16:24:59 -0800] 
+[Sun, 04 Dec 2011 16:25:11 -0800] 
+50 incoming frames, file id: animation00010100000000.gif, folder name: img911071Output00010100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 0
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 16:25:13 -0800] 
+[Sun, 04 Dec 2011 16:25:24 -0800] 
+55 incoming frames, file id: animation00010100000000.gif, folder name: img911071Output00010100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 0
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 16:25:27 -0800] 
+[Sun, 04 Dec 2011 16:25:33 -0800] 
+39 incoming frames, file id: animation00010100000000.gif, folder name: img911071Output00010100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 0
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 16:25:41 -0800] 
+[Sun, 04 Dec 2011 16:31:14 -0800] 
+40 incoming frames, file id: animation00010100000000.gif, folder name: img311189Output00010100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 1
+redoing #002
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 16:31:29 -0800] 
+[Sun, 04 Dec 2011 16:31:38 -0800] 
+30 incoming frames, file id: animation00010100000000.gif, folder name: img311189Output00010100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 1
+redoing #056
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 16:31:50 -0800] 
+[Sun, 04 Dec 2011 16:32:01 -0800] 
+50 incoming frames, file id: animation00010100000000.gif, folder name: img311189Output00010100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 2
+redoing #105
+redoing #079
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 16:32:21 -0800] 
+[Sun, 04 Dec 2011 16:32:32 -0800] 
+55 incoming frames, file id: animation00010100000000.gif, folder name: img311189Output00010100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 1
+redoing #127
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 16:32:53 -0800] 
+[Sun, 04 Dec 2011 16:33:00 -0800] 
+39 incoming frames, file id: animation00010100000000.gif, folder name: img311189Output00010100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 0
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 16:33:20 -0800] 
+[Sun, 04 Dec 2011 16:34:50 -0800] 
+72 incoming frames, file id: animation00001000000000.gif, folder name: img85788Output00001000000000
+breakpoint3 - done first pass of gif conversion
+bad count: 1
+redoing #039
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 16:35:20 -0800] 
+[Sun, 04 Dec 2011 16:44:59 -0800] 
+1 incoming frames, file id: animation00010000000000.gif, folder name: img695764Output00010000000000
+breakpoint3 - done first pass of gif conversion
+bad count: 0
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 16:44:59 -0800] 
+[Sun, 04 Dec 2011 16:50:36 -0800] 
+72 incoming frames, file id: animation00010000000000.gif, folder name: img801233Output00010000000000
+breakpoint3 - done first pass of gif conversion
+bad count: 0
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 16:51:05 -0800] 
+[Sun, 04 Dec 2011 16:55:20 -0800] 
+72 incoming frames, file id: animation00001000000000.gif, folder name: img39654Output00001000000000
+breakpoint3 - done first pass of gif conversion
+bad count: 1
+redoing #026
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 16:55:49 -0800] 
+[Sun, 04 Dec 2011 17:00:12 -0800] 
+144 incoming frames, file id: animation00001000000000.gif, folder name: img346239Output00001000000000
+breakpoint3 - done first pass of gif conversion
+bad count: 2
+redoing #075
+redoing #103
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 17:01:05 -0800] 
+[Sun, 04 Dec 2011 17:03:45 -0800] 
+72 incoming frames, file id: animation00001000000000.gif, folder name: img258191Output00001000000000
+breakpoint3 - done first pass of gif conversion
+bad count: 0
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 17:04:13 -0800] 
+[Sun, 04 Dec 2011 17:05:12 -0800] 
+72 incoming frames, file id: animation00010000000000.gif, folder name: img713796Output00010000000000
+breakpoint3 - done first pass of gif conversion
+bad count: 1
+redoing #054
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 17:05:41 -0800] 
+[Sun, 04 Dec 2011 17:12:05 -0800] 
+72 incoming frames, file id: animation10001000000000.gif, folder name: img105204Output10001000000000
+breakpoint3 - done first pass of gif conversion
+bad count: 2
+redoing #041
+redoing #018
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 17:12:38 -0800] 
+[Sun, 04 Dec 2011 17:24:00 -0800] 
+1 incoming frames, file id: animation11111000000000.gif, folder name: img896710Output11111000000000
+breakpoint3 - done first pass of gif conversion
+bad count: 0
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 17:24:01 -0800] 
+[Sun, 04 Dec 2011 17:24:24 -0800] 
+1 incoming frames, file id: animation11111000000000.gif, folder name: img392632Output11111000000000
+breakpoint3 - done first pass of gif conversion
+bad count: 0
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 17:24:25 -0800] 
+[Sun, 04 Dec 2011 17:28:12 -0800] 
+72 incoming frames, file id: animation11111000000000.gif, folder name: img593337Output11111000000000
+breakpoint3 - done first pass of gif conversion
+bad count: 4
+redoing #007
+redoing #013
+redoing #019
+redoing #028
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 17:29:17 -0800] 
+[Sun, 04 Dec 2011 17:50:19 -0800] 
+40 incoming frames, file id: animation11111100000000.gif, folder name: img120630Output11111100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 5
+redoing #007
+redoing #025
+redoing #036
+redoing #018
+redoing #031
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 17:51:17 -0800] 
+[Sun, 04 Dec 2011 17:51:38 -0800] 
+30 incoming frames, file id: animation11111100000000.gif, folder name: img120630Output11111100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 6
+redoing #053
+redoing #059
+redoing #042
+redoing #036
+redoing #047
+redoing #066
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 17:52:37 -0800] 
+[Sun, 04 Dec 2011 17:53:05 -0800] 
+50 incoming frames, file id: animation11111100000000.gif, folder name: img120630Output11111100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 4
+redoing #036
+redoing #085
+redoing #076
+redoing #107
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 17:53:57 -0800] 
+[Sun, 04 Dec 2011 17:54:18 -0800] 
+55 incoming frames, file id: animation11111100000000.gif, folder name: img120630Output11111100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 3
+redoing #036
+redoing #165
+redoing #145
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 17:54:51 -0800] 
+[Sun, 04 Dec 2011 17:54:58 -0800] 
+39 incoming frames, file id: animation11111100000000.gif, folder name: img120630Output11111100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 0
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 17:55:17 -0800] 
+[Sun, 04 Dec 2011 17:57:22 -0800] 
+72 incoming frames, file id: animation11111000000000.gif, folder name: img282560Output11111000000000
+breakpoint3 - done first pass of gif conversion
+bad count: 4
+redoing #005
+redoing #027
+redoing #018
+redoing #012
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 17:58:23 -0800] 
+[Sun, 04 Dec 2011 18:15:03 -0800] 
+1 incoming frames, file id: animation11111000000000.gif, folder name: img775221Output11111000000000
+breakpoint3 - done first pass of gif conversion
+bad count: 0
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 18:15:03 -0800] 
+[Sun, 04 Dec 2011 18:38:31 -0800] 
+40 incoming frames, file id: animation11110100000000.gif, folder name: img823085Output11110100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 4
+redoing #009
+redoing #020
+redoing #028
+redoing #035
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 18:39:17 -0800] 
+[Sun, 04 Dec 2011 18:39:33 -0800] 
+30 incoming frames, file id: animation11110100000000.gif, folder name: img823085Output11110100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 4
+redoing #057
+redoing #042
+redoing #049
+redoing #035
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 18:40:17 -0800] 
+[Sun, 04 Dec 2011 18:40:37 -0800] 
+50 incoming frames, file id: animation11110100000000.gif, folder name: img823085Output11110100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 4
+redoing #070
+redoing #080
+redoing #117
+redoing #091
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 18:41:22 -0800] 
+[Sun, 04 Dec 2011 18:41:37 -0800] 
+55 incoming frames, file id: animation11110100000000.gif, folder name: img823085Output11110100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 3
+redoing #120
+redoing #154
+redoing #136
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 18:42:09 -0800] 
+[Sun, 04 Dec 2011 18:42:15 -0800] 
+39 incoming frames, file id: animation11110100000000.gif, folder name: img823085Output11110100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 1
+redoing #208
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 18:42:36 -0800] 
+[Sun, 04 Dec 2011 18:47:47 -0800] 
+40 incoming frames, file id: animation11101100000000.gif, folder name: img109669Output11101100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 4
+redoing #005
+redoing #018
+redoing #033
+redoing #026
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 18:48:32 -0800] 
+[Sun, 04 Dec 2011 18:48:49 -0800] 
+30 incoming frames, file id: animation11101100000000.gif, folder name: img109669Output11101100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 5
+redoing #063
+redoing #018
+redoing #047
+redoing #055
+redoing #040
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 18:49:32 -0800] 
+[Sun, 04 Dec 2011 18:49:54 -0800] 
+50 incoming frames, file id: animation11101100000000.gif, folder name: img109669Output11101100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 3
+redoing #096
+redoing #047
+redoing #074
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 18:50:40 -0800] 
+[Sun, 04 Dec 2011 18:50:55 -0800] 
+55 incoming frames, file id: animation11101100000000.gif, folder name: img109669Output11101100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 3
+redoing #144
+redoing #074
+redoing #163
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 18:51:27 -0800] 
+[Sun, 04 Dec 2011 18:51:33 -0800] 
+39 incoming frames, file id: animation11101100000000.gif, folder name: img109669Output11101100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 1
+redoing #193
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 18:51:54 -0800] 
+[Sun, 04 Dec 2011 18:54:27 -0800] 
+40 incoming frames, file id: animation11011100000000.gif, folder name: img244770Output11011100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 3
+redoing #020
+redoing #028
+redoing #035
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 18:55:11 -0800] 
+[Sun, 04 Dec 2011 18:55:27 -0800] 
+30 incoming frames, file id: animation11011100000000.gif, folder name: img244770Output11011100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 3
+redoing #043
+redoing #060
+redoing #051
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 18:56:04 -0800] 
+[Sun, 04 Dec 2011 18:56:22 -0800] 
+50 incoming frames, file id: animation11011100000000.gif, folder name: img244770Output11011100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 3
+redoing #080
+redoing #043
+redoing #106
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 18:57:02 -0800] 
+[Sun, 04 Dec 2011 18:57:16 -0800] 
+55 incoming frames, file id: animation11011100000000.gif, folder name: img244770Output11011100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 4
+redoing #166
+redoing #043
+redoing #128
+redoing #146
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 18:57:48 -0800] 
+[Sun, 04 Dec 2011 18:57:53 -0800] 
+39 incoming frames, file id: animation11011100000000.gif, folder name: img244770Output11011100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 1
+redoing #196
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 18:58:15 -0800] 
+[Sun, 04 Dec 2011 18:59:56 -0800] 
+40 incoming frames, file id: animation10111100000000.gif, folder name: img940530Output10111100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 3
+redoing #039
+redoing #027
+redoing #033
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 19:00:48 -0800] 
+[Sun, 04 Dec 2011 19:01:03 -0800] 
+30 incoming frames, file id: animation10111100000000.gif, folder name: img940530Output10111100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 3
+redoing #052
+redoing #059
+redoing #045
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 19:01:51 -0800] 
+[Sun, 04 Dec 2011 19:02:09 -0800] 
+50 incoming frames, file id: animation10111100000000.gif, folder name: img940530Output10111100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 4
+redoing #097
+redoing #074
+redoing #111
+redoing #085
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 19:02:53 -0800] 
+[Sun, 04 Dec 2011 19:03:06 -0800] 
+55 incoming frames, file id: animation10111100000000.gif, folder name: img940530Output10111100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 3
+redoing #143
+redoing #129
+redoing #161
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 19:03:42 -0800] 
+[Sun, 04 Dec 2011 19:03:47 -0800] 
+39 incoming frames, file id: animation10111100000000.gif, folder name: img940530Output10111100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 0
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 19:04:12 -0800] 
+[Sun, 04 Dec 2011 19:06:32 -0800] 
+40 incoming frames, file id: animation01111100000000.gif, folder name: img655607Output01111100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 4
+redoing #006
+redoing #020
+redoing #037
+redoing #029
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 19:07:12 -0800] 
+[Sun, 04 Dec 2011 19:07:31 -0800] 
+30 incoming frames, file id: animation01111100000000.gif, folder name: img655607Output01111100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 3
+redoing #043
+redoing #060
+redoing #051
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 19:08:07 -0800] 
+[Sun, 04 Dec 2011 19:08:30 -0800] 
+50 incoming frames, file id: animation01111100000000.gif, folder name: img655607Output01111100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 4
+redoing #043
+redoing #104
+redoing #089
+redoing #076
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 19:09:08 -0800] 
+[Sun, 04 Dec 2011 19:09:26 -0800] 
+55 incoming frames, file id: animation01111100000000.gif, folder name: img655607Output01111100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 3
+redoing #043
+redoing #156
+redoing #136
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Sun, 04 Dec 2011 19:09:56 -0800] 
+[Sun, 04 Dec 2011 19:10:04 -0800] 
+39 incoming frames, file id: animation01111100000000.gif, folder name: img655607Output01111100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 2
+redoing #204
+redoing #156
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Sun, 04 Dec 2011 19:10:26 -0800] 
+[Mon, 05 Dec 2011 10:44:28 -0800] 
+72 incoming frames, file id: animation10001000000000.gif, folder name: img318092Output10001000000000
+breakpoint3 - done first pass of gif conversion
+bad count: 4
+redoing #004
+redoing #053
+redoing #034
+redoing #018
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Mon, 05 Dec 2011 10:45:14 -0800] 
+[Mon, 05 Dec 2011 10:46:32 -0800] 
+40 incoming frames, file id: animation10001100000000.gif, folder name: img750879Output10001100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 2
+redoing #016
+redoing #029
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Mon, 05 Dec 2011 10:47:02 -0800] 
+[Mon, 05 Dec 2011 10:47:04 -0800] 
+30 incoming frames, file id: animation10001100000000.gif, folder name: img750879Output10001100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 2
+redoing #062
+redoing #049
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Mon, 05 Dec 2011 10:47:28 -0800] 
+[Mon, 05 Dec 2011 10:47:31 -0800] 
+50 incoming frames, file id: animation10001100000000.gif, folder name: img750879Output10001100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 2
+redoing #084
+redoing #116
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Mon, 05 Dec 2011 10:48:05 -0800] 
+[Mon, 05 Dec 2011 10:48:07 -0800] 
+55 incoming frames, file id: animation10001100000000.gif, folder name: img750879Output10001100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 3
+redoing #128
+redoing #165
+redoing #146
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Mon, 05 Dec 2011 10:48:39 -0800] 
+[Mon, 05 Dec 2011 10:48:40 -0800] 
+39 incoming frames, file id: animation10001100000000.gif, folder name: img750879Output10001100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 1
+redoing #180
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Mon, 05 Dec 2011 10:49:05 -0800] 
+[Mon, 05 Dec 2011 10:51:46 -0800] 
+40 incoming frames, file id: animation10011100000000.gif, folder name: img943107Output10011100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 4
+redoing #022
+redoing #030
+redoing #011
+redoing #037
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Mon, 05 Dec 2011 10:52:31 -0800] 
+[Mon, 05 Dec 2011 10:52:33 -0800] 
+30 incoming frames, file id: animation10011100000000.gif, folder name: img943107Output10011100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 3
+redoing #064
+redoing #055
+redoing #040
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Mon, 05 Dec 2011 10:53:12 -0800] 
+[Mon, 05 Dec 2011 10:53:15 -0800] 
+50 incoming frames, file id: animation10011100000000.gif, folder name: img943107Output10011100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 3
+redoing #090
+redoing #078
+redoing #116
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Mon, 05 Dec 2011 10:53:58 -0800] 
+[Mon, 05 Dec 2011 10:54:00 -0800] 
+55 incoming frames, file id: animation10011100000000.gif, folder name: img943107Output10011100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 3
+redoing #173
+redoing #139
+redoing #124
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Mon, 05 Dec 2011 10:54:36 -0800] 
+[Mon, 05 Dec 2011 10:54:37 -0800] 
+39 incoming frames, file id: animation10011100000000.gif, folder name: img943107Output10011100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 1
+redoing #187
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Mon, 05 Dec 2011 10:55:03 -0800] 
+[Tue, 20 Dec 2011 11:00:39 -0800] 
+40 incoming frames, file id: animation10011100000000.gif, folder name: img544558Output10011100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 1
+redoing #034
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Tue, 20 Dec 2011 11:01:09 -0800] 
+[Tue, 20 Dec 2011 11:01:19 -0800] 
+30 incoming frames, file id: animation10011100000000.gif, folder name: img544558Output10011100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 3
+redoing #044
+redoing #069
+redoing #055
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Tue, 20 Dec 2011 11:01:45 -0800] 
+[Tue, 20 Dec 2011 11:01:56 -0800] 
+50 incoming frames, file id: animation10011100000000.gif, folder name: img544558Output10011100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 2
+redoing #080
+redoing #118
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Tue, 20 Dec 2011 11:02:25 -0800] 
+[Tue, 20 Dec 2011 11:02:33 -0800] 
+55 incoming frames, file id: animation10011100000000.gif, folder name: img544558Output10011100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 1
+redoing #163
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint6 - skipping animated gif creation
+end: [Tue, 20 Dec 2011 11:02:58 -0800] 
+[Tue, 20 Dec 2011 11:03:02 -0800] 
+39 incoming frames, file id: animation10011100000000.gif, folder name: img544558Output10011100000000
+breakpoint3 - done first pass of gif conversion
+bad count: 1
+redoing #178
+fix gif conversion try #1 complete
+breakpoint4 - done attempted fixes on gif conversion
+breakpoint5 - created animated gif
+end: [Tue, 20 Dec 2011 11:03:26 -0800] 

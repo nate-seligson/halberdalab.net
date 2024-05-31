@@ -1,0 +1,16 @@
+
+
+	 ----------------------------------- 
+	|         Gamma calibration           |
+	 ----------------------------------- 
+
+	 Screen ID : 			R3139Fujitsu
+	 Screen distance : 		60 cm
+	 Calibration type : 	RGB linearized
+	 Creation date : 		05-Dec-2013
+	 Creation time : 		16:50
+
+	 Max RED lum. : 		3.360000e+01
+	 Max GREEN lum. : 		117
+	 Max BLUE lum. : 		2.090000e+01
+	 Max GRAY lum. : 		102

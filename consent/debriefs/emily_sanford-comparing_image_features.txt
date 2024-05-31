@@ -1,0 +1,37 @@
+
+Emily Sanford - Comparing Image Features
+------
+How many apples are on that tree? Even without counting, 
+you can “guesstimate” approximately how many there are, 
+and if you are looking at two different trees, you can 
+get a strong sense for which one has more apples. The 
+mechanism by which you make these estimates is known as 
+the Approximate Number System (ANS). Although many 
+species seem to have an ANS, and in humans this ability 
+seems related to other math skills, it remains unclear 
+how the ANS figures out how many items you are looking 
+at. Despite the evidence for an evolutionarily-ancient 
+number sense, many researchers think that people make 
+decisions about number based on other features (such as 
+the density of items in a scene), and therefore, this 
+ability is not related to number at all.  The purpose of 
+this experiment is to investigate how people gather 
+numerical information from visual scenes, and to see 
+whether people behave similarly when gathering other 
+(non-numerical) information.
+
+In this experiment, you viewed the same images three 
+times, and each time you made a different decision about 
+them. If your number judgments are made on the basis of 
+“area thoughts” instead of “number thoughts,” then there 
+should be a relationship between how you responded to the 
+same image regardless of what task you were performing. 
+Also, it is likely that some features of the images are 
+easier to perceive than others, and we are investigating 
+to what extent features interfere with each other’s 
+judgment (e.g., how much do you get distracted by number 
+when making an area judgment?). This knowledge will help 
+us better understand the perceptual basis of number, 
+which has important implications for math education.
+
+******

@@ -1,0 +1,16 @@
+
+
+	 ----------------------------------- 
+	|         Gamma calibration           |
+	 ----------------------------------- 
+
+	 Screen ID : 			R1U44Sony
+	 Screen distance : 		67 cm
+	 Calibration type : 	RGB linearized
+	 Creation date : 		26-Feb-2013
+	 Creation time : 		14:41
+
+	 Max RED lum. : 		1.460000e+01
+	 Max GREEN lum. : 		4.380000e+01
+	 Max BLUE lum. : 		6.900000e+00
+	 Max GRAY lum. : 		6.260000e+01

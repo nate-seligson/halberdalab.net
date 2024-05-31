@@ -1,0 +1,16 @@
+
+
+	 ----------------------------------- 
+	|         Gamma calibration           |
+	 ----------------------------------- 
+
+	 Screen ID : 			H422Compaq
+	 Screen distance : 		60 cm
+	 Calibration type : 	RGB linearized
+	 Creation date : 		27-Oct-2011
+	 Creation time : 		11:58
+
+	 Max RED lum. : 		2.050000e+01
+	 Max GREEN lum. : 		6.140000e+01
+	 Max BLUE lum. : 		8.860000e+00
+	 Max GRAY lum. : 		9.090000e+01

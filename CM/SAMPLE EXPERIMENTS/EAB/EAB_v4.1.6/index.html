@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <meta name="robots" content="noindex">
+    <title>EAB_v4.1.6</title>
+    <link rel="icon" href="img/CM_Icon.png">
+    
+<link rel='stylesheet' type='text/css' href='jspsych.css'>
+<link rel='stylesheet' type='text/css' href='default_style.css'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+</head>
+
+<body>
+<script src='js/jquery.min.js'></script>
+<script src='js/math.min.js'></script>
+<script src='js/jsPsych-6.0.1/'></script>
+<script src='js/jsPsych-6.0.1/jspsych.js'></script>
+<script src="js/jsPsych-6.0.1/plugins/jspsych-html-keyboard-response.js"></script>
+<script src="js/jsPsych-6.0.1/plugins/jspsych-fullscreen.js"></script>
+<script src="js/jsPsych-6.0.1/plugins/jspsych-preload.js"></script>
+
+<script src='js/jsPsych-6.0.1/poldrack_plugins/poldrack_utils.js'></script>
+<script src="write_data.php"></script>
+
+<script src="add_blank_cond_file.php"></script>
+<script src="file_count_cond_select.php"></script>
+<script src="assignCondition.js"></script>
+<script src="getRandomInt.js"></script>
+<script src="helper_functions.js"></script>
+<script src='experiment.js'></script>
+
+<script>
+$( document ).ready(function() {
+    jsPsych.init({
+      timeline: rsvp_task,
+      show_progress_bar: true,
+      auto_update_progress_bar: false,
+             on_trial_finish: function(data) {
+               addID('rsvp1-task')
+             },
+
+
+             on_finish: function(){ saveData(subject_id, jsPsych.data.get().csv()),
+
+           //   on_finish: function(){ saveData(subject_id, jsPsych.data.get.filter({trial_type: 'categorize-image', correct: true}.csv()),
+    document.body.innerHTML = `
+        <p> 
+        <div style='width: 700px;'>
+        <div style='float: center;'><img src='img/yay.png'></img>
+        </div>
+        <center> Thank you for completing the experiment! </p>
+        </p> Please wait. You will be automatically redirected back to Prolific in 20 seconds. </p>
+        </p> <strong>Please do not click out of this page or close this tab. </strong> </p>
+        <p>Thank you! </center>  </p>
+        `;
+    document.documentElement.style.textAlign = 'center';
+
+    setTimeout(function () { location.href = PROLIFICLINK; }, 20000); // redirect to prolific after 10 seconds such that our data can back up to the server.
+    }, 
+    
+      });
+      
+});
+
+</script>
+</body>
+</html>

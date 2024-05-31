@@ -1,0 +1,446 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r building model with normalization}
+# empirical guess distribution
+
+library(statip)
+library(Rsolnp)
+library(dplyr)
+library(plotly)
+library(ggplot2)
+rm(list = ls()) 
+guess<-read.csv("cleanedData_GuessTrials.csv")
+dat <- read.csv("cleanedData_NonGuessTrials.csv")
+dtData <- read.csv("cleanedData_NonGuessTrials.csv")
+newGuess <- guess$reported_color_discrete
+lowAdd <- newGuess[newGuess > 280]-360
+highAdd <- newGuess[newGuess < 60]+360
+guesses <- c(lowAdd, newGuess, highAdd)
+fn<-densityfun(guesses,adjust = 1)
+wd <- getwd() 
+wd
+setwd("/Users/carolinemyers/Desktop/CM_Experiments/")
+pathnames <- list.files(pattern="[.]R$", path="/Users/carolinemyers/Desktop/CM_Experiments/Packages/CM_Functions/Data analysis", full.names=TRUE);
+#pathnames <- list.files(pattern="[.]R$", path="../../../../CM_Functions/Data analysis", full.names=TRUE);
+sapply(pathnames, FUN=source);
+rm(pathnames)
+
+```
+Plot error 
+```{r}
+
+  allData <- rbind(dtData,guess)
+distanceToTarget <- ggplot(data=allData,aes(x = as.factor(CMDispTime) , y = distance, fill = as.factor(set_size)))+
+  
+  stat_summary(fun = "mean", geom = "bar", position = "dodge")+
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = "dodge", size = 1)+
+  theme_classic(base_size=15)+
+  theme(aspect=1)+
+   ggtitle(paste0("distance from target")) +
+  labs(x = "Duration", y="distance from target")
+ # theme_Publication() 
+distanceToTarget
+  ggplotly()
+  ggsave(file="distanceToTarget.png", plot=distanceToTarget, width=10, height=8)
+
+  
+  
+
+distanceToTarget2 <- ggplot(data=allData,aes(x = as.factor(CMDispTime) , y = distance, fill = as.factor(set_size)))+
+   geom_point() + 
+  #stat_summary( geom = "point", position = "dodge")+
+ # stat_summary(fun.data = "mean_se", geom = "errorbar", position = "dodge", size = 1)+
+  theme_classic(base_size=15)+
+  theme(aspect=1)+
+   ggtitle(paste0("distance from target")) +
+  labs(x = "Duration", y="distance from target")
+ # theme_Publication() 
+distanceToTarget2
+  ggplotly()
+  ggsave(file="distanceToTarget2.png", plot=distanceToTarget2, width=10, height=8)
+
+#this one
+library(ggplot2)
+# Basic density
+p <- ggplot(allData, aes(x=distance, color=as.factor(CMDispTime))) + 
+  geom_density()
+p
+
+
+distanceToTarget2 <- ggplot(data=allData,aes(x = distance, fill = as.factor(set_size)))+
+   geom_point() 
+  distanceToTarget2
+  
+#   
+#   ggsave(file="ZPlot.png", plot=zPlot, width=10, height=8)
+# zPlot
+# modelz <- aov(data=fits, zInt ~ intDur)
+# summary(modelz)
+# summary.lm(modelz)
+# coef(summary.lm(modelz))
+
+```
+
+Plot histogram
+```{r}
+
+guess2<-replace(guess$reported_color_discrete, guess$reported_color_discrete<1,1) 
+guess2 <- data.frame(guess2)
+
+
+histColor <- ggplot(guess, aes(x = reported_color_discrete, fill = reported_color_discrete)) +
+  geom_histogram(bins=18)+
+   labs(x = "color", y = "frequency") +
+  ggtitle("Histogram of guess responses") +
+  theme_Publication()
+ggplotly(histColor)
+histColor
+ ggsave(file="histColor.png", plot=histColor, width=12, height=10)
+ ggsave(file="histColor.svg", plot=histColor, width=12, height=10)
+ 
+ 
+ ##
+ # Cleanup function for wrapped data - making anything less than "bin 1" go to last bing (360)
+wrapThreshold <- 20
+for (ii in 1:nrow(guess)){
+  if (guess$reported_color_discrete[ii] < wrapThreshold) {guess$wrappedAnswer[ii] <- 360}
+  else  {guess$wrappedAnswer[ii]  <- guess$reported_color_discrete[ii]}
+}
+hist1 <- ggplot(guess, aes(x = wrappedAnswer, fill = wrappedAnswer)) +
+  geom_histogram(binwidth=20, color="white", fill = "#58c4fc")+
+   labs(x = "orientation", y = "frequency") +
+  ggtitle("Histogram of guess responses") +
+  theme_Publication() + geom_vline(xintercept = 90,linetype = "dashed", size = 1.5) + geom_vline(xintercept = 180,linetype = "dashed", size = 1.5) + geom_vline(xintercept = 270,linetype = "dashed", size = 1.5)
+ ggsave(file="hist1.svg", plot=hist1, width=10, height=8)
+ggplotly(hist1)
+
+ 
+```
+
+#Plot ecdf
+```{r k-g test}
+
+ks <- ks.test(guess$reported_color_discrete,"punif",min(guess$reported_color_discrete),max(guess$reported_color_discrete))
+
+ ks.test(guess$reported_color_discrete,"punif",min(guess$reported_color_discrete),max(guess$reported_color_discrete))
+ 
+#Not uniform! Let's visualize
+
+    set.seed(1)
+   # x<-runif(100,-1,1)
+    #dd<-data.frame(x)
+   # ks.test(x,"punif",-1,1)
+
+    ed <- ecdf(guess$reported_color_discrete)
+    maxdiffidx <- which.max(abs(ed(guess$reported_color_discrete)-punif(guess$reported_color_discrete,min(guess$reported_color_discrete),max(guess$reported_color_discrete))))
+    maxdiffat <- guess$reported_color_discrete[maxdiffidx]
+
+    p<-ggplot(aes(reported_color_discrete),data=guess)+stat_ecdf()+theme_bw()+stat_function(fun=punif,args=list(min(guess$reported_color_discrete),max(guess$reported_color_discrete)))
+    p<-p+labs(title="ECDF and theoretical CDF", subtitle = paste('                     D = ',round(ks$statistic,digits=3), " p = ", round(ks$p.value, digits = 3), sep = ''))+
+      labs(x = "Guess response", y = "y") +
+      geom_vline(xintercept=maxdiffat, lty=2)
+    p + theme_Publication()
+    
+     ggsave(file="ECDF.png", plot=p, width=10, height=10)
+```
+
+```{r}
+#fitting functions
+#parameter limits
+sigmaint.min <- 0
+sigmaint.max <- 360
+sigmaint.start <- 30
+tau.min <- .01 #0
+tau.max <- .5
+tau.start <- .2
+
+
+#probability function (pint)
+#normal distribution could be generated from internal representation model: 
+# if no guessing, prob of response given this parameter value and assuming no guessing
+
+pint.f <- function(sigmaint, intensity, response){
+  #original probability function
+  #here we wrap values:
+  prob <- ifelse(intensity > 300, 
+              ifelse(response < 60, 
+                     dnorm(x=360+response, mean=intensity,sd=sigmaint), 
+                     dnorm(x=response, mean=intensity,sd=sigmaint)), 
+              ifelse(intensity < 60, 
+                     ifelse(response > 300, 
+  dnorm(x=response-360,mean=intensity,sd=sigmaint), 
+                            dnorm(x=response,mean=intensity,sd=sigmaint)), 
+                     dnorm(x=response,mean=intensity,sd=sigmaint)))+.001
+  prob.2 <- ifelse(is.infinite(prob),1,prob)
+  return(prob.2)
+}
+
+# probability function for pguess
+#or distribution could be generated from guess model: 
+pguess.f <- function(response){
+  prob <- ifelse(is.na(fn(response)),0.00001,fn(response))+.00001 #probability of response from empirical guess distribution, correct to .001 so no missing/0 values; get density from empirical guess using density function  
+  return(prob)
+}
+
+# optimization function using loglik (m step?)
+NLL <- function(subjectParams, trialParams, outcomes) {
+  pint <- pint.f(subjectParams[1], trialParams, outcomes) #get pint using our pint fxn
+  pguess <- pguess.f(outcomes) #get p guess using our p guess fxn 
+  tau <- subjectParams[2]
+  zint <- pint*tau/(pint*tau+pguess*(1-tau))
+  probofobs <- zint*log(pint*tau) + (1-zint)*log(pguess*(1-tau)) #get probability given data 
+  negativeloglikelihood <- -sum(probofobs)
+  
+  #saving some variables to the global environment - this is for coloring our plot according to pint
+  assign("zint", zint, envir = .GlobalEnv) # z is our final p int, gotten by dividing (internal representation distribution) by (guess distribution + internal representation distribution)
+  assign("zguess", 1-zint, envir=.GlobalEnv)
+  assign("pint", pint, envir = .GlobalEnv)
+  assign("pguess", pguess, envir = .GlobalEnv)
+  return(negativeloglikelihood)
+}
+
+# Set lower and upper bounds
+numParam <- 2
+lb <- c(sigmaint.min, tau.min)
+ub <- c(sigmaint.max, tau.max)
+subjectParams <- c(sigmaint.start, tau.start) # Set initial guesses
+```
+
+```{r}
+
+dtData <- read.csv("cleanedData_NonGuessTrials.csv")
+library(tidyr)
+dtData %>% drop_na(reported_color_discrete)
+
+#converting data for fitting
+dtData$actualN <- dtData$color_of_target
+dtData$respN <- dtData$reported_color_discrete
+for (i in 1:nrow(dtData)){
+  if (dtData$color_of_target[i] == 0){
+    dtData$actualN[i] <- 1
+  }
+  if (dtData$reported_color_discrete[i] == 0){
+    dtData$respN[i] <- 1
+  }
+}
+
+#fit overall
+fit<-solnp(subjectParams,NLL,ineqfun=NULL,ineqLB=NULL,ineqUB=NULL,LB=lb,UB=ub,control=NULL,
+         trialParams=dtData$actualN,outcomes=dtData$respN)
+sigmaint <- fit$pars[1]
+tau <- fit$pars[2]
+zint <- zint
+p.all <- ggplot(dtData, aes(x=actualN,y=respN,colour=zint))+
+  geom_point(alpha = .4, size = 3)+
+  ggtitle("All non-0 ms trials") +
+     scale_color_gradient(low = "#58c4fc", high="lightsteelblue4",name = "Z") +
+ theme_Publication() + 
+   theme(legend.position="none")
+
+ ggsave(file="all_plot.png", p.all, width=10, height=6)
+p.all 
+hist(zint)
+```
+
+```{r} 
+# ALL SET SIZES
+dtData_1 <- subset(dtData, set_size == 1)
+#try to fit sep for each duration and set size
+fits <- data.frame()
+fits.p <- list()
+i <- 1
+
+for (setSize in unique(dtData$set_size)){
+for (disp in unique(dtData$CMDispTime)){
+  thisTime <- subset(dtData, CMDispTime == disp)
+  thisTime <- subset(thisTime, set_size == setSize)
+  #set different tau for each time point
+  if (disp == 16){
+   tau.start <- .2 # tau.start <- .3
+  } else if (disp == 33){
+    tau.start <- .2
+  } else if (disp == 66){
+    tau.start <- .2
+  } else if (disp == 132){
+    tau.start <- .2
+  }
+  tau.max <- tau.start + .1
+  ub <- c(sigmaint.max, tau.max)
+  subjectParams <- c(sigmaint.start, tau.start) 
+  
+  thisFit <- solnp(subjectParams,NLL,ineqfun=NULL,ineqLB=NULL,ineqUB=NULL,LB=lb,UB=ub,control=NULL,
+         trialParams=thisTime$actualN,outcomes=thisTime$respN)
+  fits <- rbind(fits, data.frame(intDur = disp, sigma = thisFit$pars[1], 
+                                  tau = thisFit$pars[2], zInt = zint))
+  thisTime$zint <- zint
+  fits.p[[i]] <- ggplot(thisTime, aes(x = actualN, y = respN, color = zint))+
+                  geom_point(alpha = .4, size = 3)+ggtitle(paste0("Set size ",setSize, " ", disp, " ms trials")) +
+    scale_color_gradient(low = "#58c4fc", high="lightsteelblue4",name = "Z") +
+  
+    theme_Publication() + 
+   theme(legend.position="none")
+
+ ggsave(file=paste0("Set size ",setSize, " ",disp,"_plot.png"), plot=fits.p[[i]], width=10, height=6)
+ 
+ 
+  i <- i+1
+}
+}
+fits.p
+```
+
+```{r} 
+# SET SIZE 1
+dtData_1 <- subset(dtData, set_size == 1)
+#try to fit sep for each duration and set size
+fits <- data.frame()
+fits.p <- list()
+i <- 1
+for (disp in unique(dtData_1$CMDispTime)){
+  thisTime <- subset(dtData_1, CMDispTime == disp)
+  #set different tau for each time point
+  if (disp == 16){
+   tau.start <- .2 # tau.start <- .3
+  } else if (disp == 33){
+    tau.start <- .2
+  } else if (disp == 66){
+    tau.start <- .2
+  } else if (disp == 132){
+    tau.start <- .2
+  }
+  tau.max <- tau.start + .1
+  ub <- c(sigmaint.max, tau.max)
+  subjectParams <- c(sigmaint.start, tau.start) 
+  
+  thisFit <- solnp(subjectParams,NLL,ineqfun=NULL,ineqLB=NULL,ineqUB=NULL,LB=lb,UB=ub,control=NULL,
+         trialParams=thisTime$actualN,outcomes=thisTime$respN)
+  fits <- rbind(fits, data.frame(intDur = disp, sigma = thisFit$pars[1], 
+                                  tau = thisFit$pars[2], zInt = zint))
+  thisTime$zint <- zint
+  fits.p[[i]] <- ggplot(thisTime, aes(x = actualN, y = respN, color = zint))+
+                  geom_point(alpha = .4, size = 3)+ggtitle(paste0(disp, " ms trials")) +
+    scale_color_gradient(low = "#58c4fc", high="lightsteelblue4",name = "Z") +
+  
+    theme_Publication() + 
+   theme(legend.position="none")
+
+ ggsave(file=paste0(disp,"_plot.png"), plot=fits.p[[i]], width=10, height=6)
+ 
+ 
+  i <- i+1
+}
+fits.p
+```
+```{r} 
+# SET SIZE 3
+dtData_3 <- subset(dtData, set_size == 1)
+#try to fit sep for each duration and set size
+fits <- data.frame()
+fits.p <- list()
+i <- 1
+for (disp in unique(dtData_3$CMDispTime)){
+  thisTime <- subset(dtData_3, CMDispTime == disp)
+  #set different tau for each time point
+  if (disp == 16){
+   tau.start <- .2 # tau.start <- .3
+  } else if (disp == 33){
+    tau.start <- .2
+  } else if (disp == 66){
+    tau.start <- .2
+  } else if (disp == 132){
+    tau.start <- .2
+  }
+  tau.max <- tau.start + .1
+  ub <- c(sigmaint.max, tau.max)
+  subjectParams <- c(sigmaint.start, tau.start) 
+  
+  thisFit <- solnp(subjectParams,NLL,ineqfun=NULL,ineqLB=NULL,ineqUB=NULL,LB=lb,UB=ub,control=NULL,
+         trialParams=thisTime$actualN,outcomes=thisTime$respN)
+  fits <- rbind(fits, data.frame(intDur = disp, sigma = thisFit$pars[1], 
+                                  tau = thisFit$pars[2], zInt = zint))
+  thisTime$zint <- zint
+  fits.p[[i]] <- ggplot(thisTime, aes(x = actualN, y = respN, color = zint))+
+                  geom_point(alpha = .4, size = 3)+ggtitle(paste0(disp, " ms trials")) +
+    scale_color_gradient(low = "#58c4fc", high="lightsteelblue4",name = "Z") +
+  
+    theme_Publication() + 
+   theme(legend.position="none")
+
+ ggsave(file=paste0(disp,"_plot.png"), plot=fits.p[[i]], width=10, height=6)
+ 
+ 
+  i <- i+1
+}
+fits.p
+```
+
+```{r}
+#summarize it:
+library(dplyr)
+datZSummary <- fits %>% 
+   group_by(intDur) %>% 
+  summarise(means = mean(zInt), sd = sd(zInt), n = n(), 
+            se = sd / sqrt(n))
+
+levels(fits$intDur)
+
+res.aov <- aov(zInt ~ intDur, data = fits)
+# Summary of the analysis
+summary(res.aov)
+
+
+
+#zDF_long <- na.omit(zDF_long)
+ggplot(data=fits,aes(x = as.factor(intDur), y = zInt))+
+  stat_summary(fun = "mean", geom = "bar", fill = "white", color = "black")+
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = .5)+
+  theme_classic(base_size=15)+
+  theme(aspect=1)+
+  labs(x = "Duration", y="z") 
+  
+ggplot(data=fits,aes(x = as.factor(intDur), y = zInt))+
+  stat_summary(fun = "mean", geom = "bar", fill = "white", color = "black")+
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = .2)+
+  theme_classic(base_size=15)+
+  theme(aspect=1)+
+  labs(x = "Duration", y="z") +
+  theme_Publication()
+
+
+sigPlot <- ggplot(data=fits,aes(x = as.factor(intDur), y = sigma))+
+  stat_summary(fun = "mean", geom = "bar", fill = c("lightskyblue2","#58c4fc","deepskyblue4","lightsteelblue4"))+
+  stat_summary(fun.data = "mean_se", geom = "errorbar", size = 3, width = .5)+
+  theme_classic(base_size=15)+
+  theme(aspect=1)+
+   ggtitle(paste0("sigint")) +
+  labs(x = "Duration", y="sigint")+ 
+  theme_Publication() 
+  ggplotly()
+ggsave(file="ZPlot.png", plot=sigPlot, width=10, height=8)
+sigPlot
+modelSig <- aov(data=fits, sigma ~ intDur)
+summary(modelSig)
+summary.lm(modelSig)
+coef(summary.lm(modelSig))
+
+
+zPlot <- ggplot(data=fits,aes(x = as.factor(intDur), y = zInt))+
+  stat_summary(fun = "mean", geom = "bar", fill = c("lightskyblue2","#58c4fc","deepskyblue4","lightsteelblue4"))+
+  stat_summary(fun.data = "mean_se", geom = "errorbar", size = 3, width = .5)+
+  theme_classic(base_size=15)+
+  theme(aspect=1)+
+   ggtitle(paste0("zInt")) +
+  labs(x = "Duration", y="zInt")+ 
+  theme_Publication() 
+  ggplotly()
+ggsave(file="ZPlot.png", plot=zPlot, width=10, height=8)
+zPlot
+modelz <- aov(data=fits, zInt ~ intDur)
+summary(modelz)
+summary.lm(modelz)
+coef(summary.lm(modelz))
+
+```

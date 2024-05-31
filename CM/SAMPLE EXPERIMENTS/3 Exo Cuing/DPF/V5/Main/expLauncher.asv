@@ -1,0 +1,160 @@
+%% General experimenter launcher %%
+%  =============================  %
+% Last edit : 2021-06-22
+% By : Caroline Myers
+% Description : Experiment to test [...]
+% FORTHCOMING
+
+%  =============================  %
+%Edit history- V3
+%07/14/21
+%- CM adds manual mode option to manually adjust contrast if needed. This
+%is a special option that should not be changed
+%07/06/21
+%- CM edits runBlock and sbjConfig so now participant performance in the
+%training is compared to 80%- if below 80%, new variable repeatTraining ==
+%1. This value is loaded in sbjConfig and if repeatTraining == 1, training
+%is repeated. This continues until participant achieves accuracy > 80%
+%06/22/21
+ %- CM changes const.Config and adds variable to expLauncher (spatialFreq)
+ %so now this can easily be changed. She does not want this to be a text
+ %input though, so this affords just the right amount of flexibility
+
+%06/21/21:
+    %- CM changes const.Config to make it 6 cpd. She hard-coded this to run
+    %a subject, but in terms of long-term retention, it's a terrible idea.
+    %She WILL fix this next. ASAP.
+%06/06/12:
+    %- CM adds her monitor specs so she can now pilot on her own! 
+    %- CM swaps feedback tones so incorrect is now low tone and correct is high tone
+       %to match previous versions of experiment
+    %- CM adds cute experiment and instruction pages   
+
+%06/06/11: CM pilots and adds the following:
+    %- changes colors of threshold plot
+    %- adds terrible legend
+%06/06/08: NH teaches CM how to program a beautiful experiment
+
+%% To do:
+
+%% Questions:
+
+%% First setup
+clearvars;close all;home;ListenChar(1);AssertOpenGL; % clear everything
+
+% Task and stimulus parameters we need easy control of:
+const.spatialFreq  = 4;                     % Set SF manually (in cpd) according to condition            4 or 6 cpd
+
+% General settings
+const.expName                = 'DPF';                 % Experiment name
+const.expStart               = 1;                     % Start of a recording exp- 01                           0 = NO   , 1 = YES
+const.mkVideo                = 0;                     % Make a video of one trial                         0 = NO   , 1 = YES
+const.checkTrial             = 1;                     % Display trial conditions                          0 = NO   , 1 = YES
+const.checkTimeFrm           = 0;                     % Set to 1, Display time frames                               0 = NO   , 1 = YES
+const.pausetrial             = 0;                     % Should be 0, Pauses trial for every new onset                  0 = NO   , 1 = YES 
+const.transpMode             = 1;
+const.manualContrast         = 0;                     % if const.manualContrast = 1, CYOA! DO NOT CHANGE THIS!
+% External controls
+const.eyeMvt       = 0;                     % Record eye movement                               0 = NO   , 1 = YES
+const.TEST         = 0;                     %CM CHANGED FOR PILOTING, SHOULD BE 0 
+const.checkEyeLat  = 0;
+
+% Screen  
+const.screenName   = 'CarrascoR1'; %% CHANGE ME! 
+
+if strcmp(const.screenName,'Theon')         % Desired refresh rate
+    fprintf('\n\t!!! PILOT screen setup !!!\n');
+    const.desiredFD     = 60;
+    const.desiredRes    = [1920,1200];
+elseif strcmp(const.screenName,'Weber')         %Caroline's test monitor
+    fprintf('\n\t!!! PILOT screen setup !!!\n');
+    const.desiredFD     = 60;
+    const.desiredRes    = [1920,1080];
+elseif strcmp(const.screenName,'CarrascoL1') || strcmp(const.screenName,'CarrascoR2')
+    const.desiredFD     = 100;
+    const.desiredRes    = [1280 960];
+elseif strcmp(const.screenName,'CarrascoR1')
+    const.desiredFD     = 100;
+    const.desiredRes    = [1280 960];
+elseif strcmp(const.screenName,'Carrasco956')
+    const.desiredFD     = 60; %CM?
+    const.desiredRes    = [1152, 864]; %CM?
+end
+if const.mkVideo;const.desiredFD=60;const.eyeMvt=0;end
+
+
+% Path
+fDir = fileparts(mfilename('fullpath'));
+cd(fDir); cd('../');
+
+%% Task and subject info
+% training (1), thresholding (2), experimental blocks (3)
+const.chooseTask = 1;
+
+[const] = sbjConfig(const);
+
+
+%% Trial / Block info
+if const.task == 1      % training
+    const.numBlock     	=   1;   	% number of blocks to play per run time
+    const.numBlockTot  	=   1;    	% total number of blocks
+    const.trial_nb   	=   24; %24;     	% number of trials per block
+    % --------------
+    % = 24 training trials
+    
+elseif const.task == 2  % threshold
+    const.numBlock     	=   1; %2
+    const.numBlockTot  	=   2;
+    const.trial_nb   	=  100;%24; %100;      % needs to be multiple of 4
+    %    2 runs of
+    %    4 interleaved staircases
+    % * 25 trials per staircase
+    % --------------
+    % = 200 trials
+    
+elseif const.task == 3  % main attention task
+    const.numBlock     	=   4; %run in blocks of 4
+    const.numBlockTot  	=   20; %20 total blocks
+    const.trial_nb   	=  48; %100; % needs to be multiple of 4
+    %    4 locations
+    %    2 cue types (neutral, valid)
+    % * 50 tpdp
+    % --------------
+    % = 400 trials (to be run in 2 blocks of 100 trials)    
+end
+
+
+%% Start pretest or main experiment
+if const.mkVideo;const.numBlockTot=1;end
+
+for block = const.fromBlock:(const.fromBlock+const.numBlock-1)
+    if block > const.numBlockTot || isnan(block);continue; end
+    tic;
+    
+    const.startBlock = const.fromBlock;
+    const.fromBlock = block;
+    
+    % Summary
+    if const.task == 1
+        if const.expStart;  fprintf(1,'\n\n\t\t... Starting TRAINING #%i \n\n',const.fromBlock);
+        else                fprintf(1,'\n\n\t\t... Starting -DEMO- TRAINING');
+        end
+    elseif const.task == 2
+        if const.expStart;  fprintf(1,'\n\n\t\t... Starting THRE block #%i/%i\n\n',const.fromBlock,const.numBlockTot);
+        else                fprintf(1,'\n\n\t\t... Starting -DEMO- THRE block #%i\n\n',const.fromBlock);
+        end
+    elseif const.task == 3
+        if const.expStart;  fprintf(1,'\n\n\t\t... Starting MAIN block #%i/%i\n\n',const.fromBlock,const.numBlockTot);
+        else                fprintf(1,'\n\n\t\t... Starting -DEMO- MAIN block #%i\n\n',const.fromBlock);
+        end
+    end
+    WaitSecs(2);
+    main(const); clear expDes
+    if block  ~= const.numBlockTot;cd ../../../../;end
+end
+
+% %% Analysis
+% if const.task == 2 && const.fromBlock == const.numBlockTot && ~const.mkVideo
+%     %all_analysis(const.sjct,const.sjct_DomEye,const.expName,'Main',1:const.numBlockTot,1)
+% end
+

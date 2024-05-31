@@ -1,0 +1,126 @@
+function [out] = MLE_ModelFunc_V25_noncirc_V1 (X,Y,MaxIter,Y0dens,Y0mesh,smoothwindowsize)
+% 10-25-2012
+% have repetitions with different initial values and then compare them and
+% pick the params with the largest likelihood
+% 10-23-2012
+% use unwrapped data for KDE (0~2pi)
+% use wrapped data for VM (-pi~pi)
+% x and y are wrapped radian values (bc the main function uses randvonmises.
+
+X = X'; %intAnsAll
+Y = Y'; %intRespAll
+% size(X)
+% size(Y)
+nn = length(X);
+rep = 0;
+% change the linear data to circular by taking difference
+% D = X-Y;
+% wrappedy_kde = Y;
+% wrappedY = Y;
+% wrappedY(abs(D) > 180-abs(D) & X <= 90) = 180-wrappedY(abs(D) > 180-abs(D) & X <= 90); 
+% wrappedY(abs(D) > 180-abs(D) & X > 90) = 180+wrappedY(abs(D) > 180-abs(D) & X > 90);
+% wrappedY(wrappedY <=0) = wrappedY(wrappedY <=0)+180; 
+% wrappedY(X>90 & wrappedY<-90) = wrappedY(X>90 & wrappedY<-90)+360;
+% wrappedY(X<90 & wrappedY<-90) = wrappedY(X<90 & wrappedY<-90)+180;
+% wD = X-wrappedY; 
+% wrappedY(abs(wD) > 180-abs(wD) & X <= 90) = 180-wrappedY(abs(wD) > 180-abs(wD) & X <= 90); 
+
+% % % % % wrappedY(abs(wD) > 180-abs(wD) & X < 90) = 180-wrappedY(abs(wD) > 180-abs(wD) & X < 90);
+% % % % % wrappedY(abs(wD) > 180-abs(wD) & X >= 90) = 180+wrappedY(abs(wD) > 180-abs(wD) & X >= 90);
+
+initial_sigInt = [5 10 100];
+
+
+initial_tau = 0.4:0.2:1;
+%initial_tau = binSTD; %CM
+xbeta= 1;
+% wrappedy_kde(wrappedy_kde<0) = wrappedy_kde(wrappedy_kde<0)+180;
+% wrappedy_kde(wrappedy_kde>180) = wrappedy_kde(wrappedy_kde>180)-180;
+
+for i = 1:length(initial_sigInt)
+    for j = 1:length(initial_tau)
+        rep = rep+1;
+        %initial values
+        initial = [1 initial_sigInt(i)];
+        Z = rand(1,nn);
+        sigInt = initial(2);
+        tau = initial_tau(j); %% this is original!
+        sigIntold = sigInt;
+        tauold = tau;
+        LLold = 1; 
+        % start the fitting procedure!
+        for ii = 1:MaxIter
+            % until convergence
+            % E-step: replace Zi by expectation taken under posterior probability
+            mass1 = normpdf(Y, xbeta*X, sigInt) *tau; % wrappedY
+            mass2 = getDensityKDE_v3(Y0dens, Y0mesh, Y, smoothwindowsize) *(1-tau); % wrappedy_kde or wrappedY % from kernel density
+% % % % %             mass2 = getDensityKDE_v3(Y0dens, Y0mesh, wrappedY, 0.1) *(1-tau); % wrappedy_kde or wrappedY % from kernel density
+%             mass2 = mass2';
+%             size(mass1)
+%             size(mass2)
+            Z = mass1./(mass1+mass2);
+            %             if any(isnan(Z)) == 1
+            %                 sigInt
+            %                 tau
+            %             end
+            % M-step: maximize parameters using weighted data.
+            % fit beta
+            xbeta = 1;
+            %             xbeta = sum(Z .*X .*wrappedY) / sum(Z .* X.^2);
+            % fit tau
+            tau = (sum(Z)+1) / (nn+2);  % with prior tau ~ Beta(1,1)
+            % fit sigInt
+           
+            
+            sigInt = sqrt(sum(Z .*((Y-xbeta*X).^2)) / sum(Z)); % mean sq wrappedY
+           
+         % sigInt = sqrt( nansum( Z .*(((Y- (X)).^2)./(X) .^2) ) / nansum(Z) ); 
+            
+            
+            
+            sumL = sum(Z .*mass1 + (1-Z) .*mass2);
+            LL = log(sumL);
+            if abs(LL-LLold) < 1e-3 && abs(tau-tauold) < 1e-5 && abs(sigInt-sigIntold) <1e-5
+                break;
+            end
+            sigIntold = sigInt;
+            tauold = tau;
+            LLold = LL; 
+        end
+        % get the masses with the fitted parameters.
+        mass1 = normpdf(Y, xbeta*X, sigInt) *tau; %
+        mass2 = getDensityKDE_v3(Y0dens, Y0mesh, Y, smoothwindowsize) *(1-tau); % wrappedy_kde or wrappedY % from kernel density
+% % % % %         mass2 = getDensityKDE_v3(Y0dens, Y0mesh, wrappedY, 0.1) *(1-tau); % wrappedy_kde or wrappedY % from kernel density
+%         mass2 = mass2';
+        Z = mass1./(mass1+mass2);
+        all_mass1{rep} = mass1;
+        all_mass2{rep} = mass2;
+        all_Z{rep} = Z;
+        Pm = mean(Z);
+        all_pm(rep) = Pm;
+        all_sigInt(rep) = sigInt;
+        all_tau(rep) = tau;
+        % now get the likelihood and save them.
+        likelihood(rep) = log(sum(Z .*mass1 + (1-Z) .*mass2));
+    end
+end
+
+% find the maximumlikelihood and its parameters
+[maxlikelihood maxid] = max(likelihood);
+finalZ = all_Z{maxid};
+finaltau = all_tau(maxid);
+finalpm = all_pm(maxid);
+finalmass1 = all_mass1{maxid};
+finalmass2 = all_mass2{maxid};
+finalsigInt = all_sigInt(maxid);
+%%%%%%%%%%%%%%% final outcome from the winner!
+out.mass1 = finalmass1;
+out.mass2 = finalmass2;
+out.latent = finalZ;
+out.sigInt =finalsigInt;
+out.Pm = finalpm;
+out.X = X;
+out.Y = Y;
+out.tau = finaltau;
+out.likelihood = maxlikelihood;
+% out.wrappedY = wrappedY; 

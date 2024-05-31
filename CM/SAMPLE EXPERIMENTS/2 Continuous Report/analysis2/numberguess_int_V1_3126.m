@@ -1,0 +1,913 @@
+%% Import our data for 3.1.26
+
+clearvars -except figs2keep
+close all
+excludeSubs = 0;
+load('colz.mat');
+load('colorsAll.mat')
+% figs2keep = [12];
+% 
+% all_figs = findobj(0, 'type', 'figure');
+% delete(setdiff(all_figs, figs2keep));
+
+clearvars subjID;
+load('subjectStructNM3_1_26.mat')
+
+subListAll = string(fieldnames(subjectStructNM3126));
+IncludedDataMatrix = [];
+for ii=1: length(subListAll)
+     
+    subjID(ii) = (subListAll(ii))';
+  
+   %%COMMENT IN TO INCLUDE
+%    if subjectStructNM3126.(subjID(ii)).included == 1;
+   
+   % subjID(ii) = ('s1_subject_id')';
+    
+  [colors,tickLabels] =  getColors();
+  
+  guessd= table2array(subjectStructNM3126.(subjID(ii)).guessTrials);
+%%guessd = importdata('guessTrials.csv');
+%%guessresp = guessd.data(:,2);
+%guessresp = str2double(guessd(:,23)); %reported color discrete
+guessresp = subjectStructNM3126.(subjID(ii)).guessTrials.reported_color_discrete;
+
+guessSubjectID = repmat(subjID, height(guessresp),1);
+%transformed:
+guessdTransformed = table2array(subjectStructNM3126.(subjID(ii)).guessTrialsTransformed);
+%guessrespTransformed = str2double(guessdTransformed(:,36));
+guessrespTransformed = subjectStructNM3126.(subjID(ii)).guessTrialsTransformed.reported_color_discrete;
+
+%make array of trial numbers
+guessTrialNum = double(1):double(length(guessresp));
+guessTrialNum = guessTrialNum';
+
+
+
+
+%% Getting our data: non guess 132 ms trials.
+%intd = importdata('mostTargetSizeCM.csv');
+ intd132= table2array(subjectStructNM3126.(subjID(ii)).nonGuessTrials132);
+ 
+  intd132Transformed = table2array(subjectStructNM3126.(subjID(ii)).nonGuessTrials132Transformed);
+
+  
+intAns132 = subjectStructNM3126.(subjID(ii)).nonGuessTrials132.color_of_target;
+intResp132 = subjectStructNM3126.(subjID(ii)).nonGuessTrials132.reported_color_discrete;
+
+
+intResp132Transformed = subjectStructNM3126.(subjID(ii)).nonGuessTrials132Transformed.TransformedResponseWinner; %transformed response, 35
+subName = repmat (subjID(ii),140);
+
+%% Getting our data: non guess, ALL trials.
+
+
+
+%intd = importdata('mostTargetSizeCM.csv');
+intd= table2array(subjectStructNM3126.(subjID(ii)).nonGuessTrials);
+intdTransformed = table2array(subjectStructNM3126.(subjID(ii)).nonGuessTrialsTransformed);
+
+intDur = subjectStructNM3126.(subjID(ii)).nonGuessDurations;
+%intAns = intd.data(:,1); 
+%intAns = str2double(intd(:,30)); %CMColor, the true color
+
+intAns = subjectStructNM3126.(subjID(ii)).nonGuessTrials.color_of_target;
+intAnsTransformed  = subjectStructNM3126.(subjID(ii)).nonGuessTrialsTransformed.color_of_target;%transformed true color, 36
+
+%intResp = intd.data(:,2);
+%intResp = str2double(intd(:,23)); %Reported color discrete
+intResp = subjectStructNM3126.(subjID(ii)).nonGuessTrials.reported_color_discrete;
+intRespTransformed = subjectStructNM3126.(subjID(ii)).nonGuessTrialsTransformed.TransformedResponseWinner; %transformed response, 35
+
+
+
+
+
+%% Get all data
+cleanedData = subjectStructNM3126.(subjID(ii)).cleanedData;
+if ii == 1
+
+intRespTransformedAll = [];
+intRespAll = [];
+intAnsAll = [];
+guessrespAll = [];
+intAnsTransformedAll = [];
+guessTrialNumAll= [];
+cleanedDataAll = [];
+meanErrorAll = [];
+intResp132TransformedAll = [];
+intAnsAll132 = [];
+meanError132All = [];
+intDurAll = [];
+subNameAll = [];
+guessSubjectID_All = [];
+else
+    
+end
+guessSubjectID_All = vertcat(guessSubjectID_All,guessSubjectID(:,ii));
+subNameAll = vertcat(subNameAll,subName);
+intDurAll = vertcat(intDurAll,intDur);
+intResp132TransformedAll = vertcat(intResp132TransformedAll,intResp132Transformed);
+intAnsAll132 = vertcat(intAnsAll132,intAns132);
+meanErrorAll = vertcat(meanErrorAll,subjectStructNM3126.(subjID(ii)).meanNonGuessError);
+guessrespAll = vertcat(guessrespAll,guessresp);
+intAnsAll = vertcat(intAnsAll,intAns);
+intRespAll = vertcat(intRespAll,intResp);
+intRespTransformedAll = vertcat(intRespTransformedAll,intRespTransformed);
+intAnsTransformedAll = vertcat(intAnsTransformedAll,intAnsTransformed);
+guessTrialNumAll = vertcat(guessTrialNumAll, guessTrialNum);
+cleanedDataAll = vertcat(cleanedDataAll,cleanedData);
+meanError132All = vertcat(meanError132All,subjectStructNM3126.(subjID(ii)).meanError132)
+  %  else
+    
+  %  end
+end
+  
+%% Now let's clear some confusing variables. 
+clearvars intAns132 intAns intd intd132 intd132Transformed guessd ...
+gessdTransformed gessresp guessrespTransformed intAnsTransformed ...
+intRespTransformed intResp intResp132 intResp132Transformed intdTransformed ...
+guessresp guessdTransformed ii
+
+%% Now as a first pass, let's look at accuracy and error for all trials
+
+ourAcc = horzcat(intAnsAll,intRespTransformedAll)
+ourAcc(:,3) = abs(intAnsAll - intRespTransformedAll)
+
+%%%%%% unbinned
+for ii = 1:length(unique(ourAcc(:,1)))
+  avgErrorByColor(:,ii) = mean(ourAcc(ourAcc(:,1)==(ii-1),3))';
+end
+
+
+%%%%%% now binned, 18 bins
+[NAcc,edgesAcc,binsAcc] = histcounts(ourAcc(:,1),18);
+ourAccBinned = horzcat(ourAcc, binsAcc)
+for ii = 1:size(NAcc,2)
+  avgErrorByColorBinned(:,ii) = mean(ourAccBinned(ourAccBinned(:,4)==(ii),3))';
+end
+
+
+%% Now let's look at accuracy and error for only 132 ms trials. 
+
+ourAcc132 = horzcat(intAnsAll132,intResp132TransformedAll)
+ourAcc132(:,3) = abs(intAnsAll132 - intResp132TransformedAll)
+
+%%%%%% unbinned
+for ii = 1:length(unique(ourAcc132(:,1)))
+  avgErrorByColor132(:,ii) = mean(ourAcc132(ourAcc132(:,1)==(ii-1),3))';
+end
+
+
+%%%%%% now binned, 18 bins
+[NAcc132,edgesAcc132,binsAcc132] = histcounts(ourAcc132(:,1),18);
+ourAccBinned132 = horzcat(ourAcc132, binsAcc132)
+for ii = 1:size(NAcc132,2)
+  avgErrorByColorBinned132(:,ii) = mean(ourAccBinned132(ourAccBinned132(:,4)==(ii),3))';
+end
+
+
+%% plot guess resp pretty
+% figure
+% histogram(guessrespAll,'Normalization','probability')
+% 
+% [f,xi] = ksdensity(guessrespAll);
+% hold on
+% plot(xi,f)
+
+%% Plot mean error so we can see who to include/exclude
+%zscore(meanErrorAll)
+figure(1)
+subplot(1,2,1)
+hist(meanErrorAll)
+title('Histogram of mean error on non-zero ms trials')
+Marisize(12,1)
+x = xline((mean(meanErrorAll)))
+set(x, 'LineWidth',3,'Color','r')
+x1 = xline((mean(meanErrorAll)) + (2*std(meanErrorAll)));
+set(x1, 'LineWidth',3)
+hold on
+x2 = xline((mean(meanErrorAll)) - (2*std(meanErrorAll)));
+set(x2, 'LineWidth',3)
+hold on
+
+
+subplot(1,2,2)
+hist(meanError132All)
+title('Histogram of mean error on 132 ms trials')
+
+xx = xline((mean(meanError132All)))
+set(xx, 'LineWidth',3,'Color','r')
+
+x3 = xline((mean(meanError132All)) + (2*std(meanError132All)));
+set(x3, 'LineWidth',3)
+hold on
+x4 = xline((mean(meanError132All)) - (2*std(meanError132All)));
+set(x4, 'LineWidth',3)
+
+Marisize(12,1)
+sgtitle('Error distributions- all subjects')
+Marisize(12,1)
+%% Get standard deviations for guesses
+responses0ms = sort(guessrespAll);
+%[N,edgesGuess,binsGuess] = histcounts(guessrespAll);
+
+[N,edgesGuess,binsGuess] = histcounts(guessrespAll);
+
+for ii = 1:size(N,2)
+  bin_std(:,ii) = std(guessrespAll(binsGuess==ii,:))';
+end
+
+[NAns,edgesAns,binsAns] = histcounts(intAnsAll,edgesGuess);
+
+binsAns = binsAns';
+
+for ii = 1:size(binsAns,2)
+   
+     binsAns(2,ii) =  bin_std(binsAns(1,ii));
+     
+end
+
+
+% now let's get bin stds for non-guess trials
+
+%% Get standard deviations for non-guesses
+
+%[N,edgesGuess,binsGuess] = histcounts(guessrespAll);
+
+[N,edgesResp,binsResp] = histcounts(intRespTransformedAll,18);
+
+for ii = 1:size(N,2)
+  bin_std(:,ii) = std(intRespTransformedAll(binsResp==ii,:))';
+end
+
+[NAns,edgesAns,binsAns] = histcounts(intRespTransformedAll,edgesResp);
+
+binsAns = binsAns';
+
+for ii = 1:size(binsAns,2)
+   
+     binsAns(2,ii) =  bin_std(binsAns(1,ii));
+     
+end
+
+x = guessrespAll;
+pd = makedist('uniform','Lower',0,'Upper',359);
+%pd = makedist('uniform');
+[h,p,ksstat,cv] = kstest(x,'cdf',pd)
+%[h,p,ci,stats] = kstest(x,'cdf',pd)
+keyboard;
+% binStds = figure(1);
+% plot(bin_std)
+% title('bin stds non-guess')
+% Marisize(12,1)
+%% Now let's plot
+%figure
+
+%% export
+
+dataRaw = table(intAnsAll,intRespAll,intDurAll,subNameAll(:,1))
+dataRaw.Properties.VariableNames = {'q2ActualNumber'	'numericalAnswer.keys'	'intDur'	'subName'};
+filename = 'dataRAW.csv';
+writetable(dataRaw,filename)
+
+guess = table(guessrespAll,guessSubjectID_All)
+guess.Properties.VariableNames = {'numericalAnswer.keys'	'subName'};
+filename = 'guess.csv';
+writetable(guess,filename)
+
+
+[similarityMatrix,simMatAvgs,colorMat] = SimilarityMatrixCM(0)
+colorsforBinPlots = horzcat(colorMat(:,:,1),colorMat(:,:,2),colorMat(:,:,3))
+
+% sample = guessrespAll
+% xValues = unique(sample);
+% binColors = xx
+% hf = figure; hax = axes; hold on;
+% legendStr = cell(1,length(xValues));
+% for i=1:18
+%      histogram(hax, sample(sample == xValues(i)), 'FaceColor',binColors(i,:));    
+%      legendStr(i) = {num2str(xValues(i))};
+% end
+% %legend(legendStr);
+% shg
+
+%% now subplots
+
+% guessd = importdata('guessTrials.csv');
+% guessresp = guessd.data(:,2);
+% intd = importdata('mostTargetSize.csv');
+% intAns = intd.data(:,1);
+% intResp = intd.data(:,2);
+[N,edges] = histcounts(guessrespAll,18)
+[similarityMatrix,simMatAvgs,colorMat] = SimilarityMatrixCM(0)
+compFig = figure(2);
+%h = subplot(5,1,1);
+figure
+hist(guessrespAll,18); %18 bins so 20 observations per bin
+tickz = getColorsCM(18, 20)
+xticklabels(tickz)
+xticks(([10:20:350]));
+%  240, 260, 280, 300, 320, 340,350]));
+colorBins = 0:20:360;
+xlim([0,360]);
+shg
+keyboard()
+
+figure(3)
+[f,xi] = ksdensity(guessrespAll); 
+figure
+plot(xi,f);
+xlim([0,360]);
+keyboard();
+%hold on
+ %set(h, {'FaceColor'}, mat2cell(xx,ones(size(xx,1),1),3))
+  %set(h, {'FaceColor'}, colorMat(:,1,1:3));
+ 
+% xticks(([10,20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, ...
+%  240, 260, 280, 300, 320, 340,350]));
+%xticklabels(tickLabels);
+
+title('histogram of guess responses');
+ylabel('Frequency', 'FontSize', 18); 
+Marisize(12,1)
+
+
+subplot(5,1,2);
+%[similarityMatrix,simMatAvgs,colorMat] = SimilarityMatrixCM(0)
+C = [];
+  simMatStds = [];
+  simMatAvgs = [];
+    for ii = 1:height(similarityMatrix) 
+      simMatStds(ii,:) = std(similarityMatrix(ii,:));
+      simMatAvgs(ii,:) = mean(similarityMatrix(ii,:));
+        C(ii,:) = smoothdata(similarityMatrix(ii,:),'gaussian');
+
+      plot(similarityMatrix(ii,:),'Color',colorMat(ii,1,1:3),'Linewidth', 2)
+        hold on
+    end
+    xlim([0,360])
+    title('mean similarity ratings from Brady similarity task') 
+Marisize(12,1)
+
+
+
+
+subplot(5,1,3);
+%plot(simMatStds);
+XData = [1:18]
+for i = 1 : length(simMatStds) - 1
+  line('XData', XData(i:i+1), 'YData', simMatStds(i:i+1), 'Color',colorMat(i,1,1:3),'Linewidth',2);
+end
+
+Marisize(12,1);
+% for ii = 1:height(simMatStds) ;
+%   plot(simMatStds(ii,1),'Color',colorMat(ii,1,1:3),'Linewidth', 2)
+%   
+% end
+ title('std from Brady similarity task') 
+ xlim([0.5,18.5])
+xticks([]);
+%std(similarityMatrix(1,:))
+%plot(simMatStds)
+
+
+
+subplot(5,1,4);
+%plot(simMatStds);
+XData = [1:18]
+for i = 1 : length(simMatAvgs) - 1
+  line('XData', XData(i:i+1), 'YData', simMatAvgs(i:i+1), 'Color',colorMat(i,1,1:3),'Linewidth',2);
+end
+
+Marisize(12,1);
+% for ii = 1:height(simMatStds) ;
+%   plot(simMatStds(ii,1),'Color',colorMat(ii,1,1:3),'Linewidth', 2)
+%   
+% end
+ title('avg similarity from Brady similarity task') 
+ xlim([0.5,18.5])
+xticks([]);
+%std(similarityMatrix(1,:))
+%plot(simMatStds)
+
+
+%load('colorsAll.mat')
+
+%[~,~,colorsAll3] = SimilarityMatrixCM(plot)
+%clearvars colorMat
+subplot(5,1,5);
+  for j=1:length(colorBins)-1
+    % Bins are 20 wide, so take the middle color (+10) to show
+    whichColor = colorBins(j)+10;   
+    colorMat(j,1,1:3) = colorsAll(whichColor,:)./255;
+    %colorMat(1,j,1:3) = colorsAll(whichColor,:)./255;
+  end
+  
+  imshow(imresize(pagectranspose(colorMat),[20 360],'nearest'));
+
+sgtitle('Comparisons to mean and std from Brady similarity matrix')
+Marisize(12,1)
+keyboard;  
+
+%% Now let's compare accuracy, std, and brady similarity- all trials
+stdfig = figure(3);
+
+subplot(1,3,1);
+hist(guessrespAll,18); %18 bins so 20 observations per bin
+tickz = getColorsCM(18, 20);
+
+
+xticklabels(tickz)
+ylabel('frequency')
+title('Guess responses on zero-ms trials');
+xticks(([10:20:350]));
+%  240, 260, 280, 300, 320, 340,350]));
+colorBins = 0:20:360;
+xlim([0,360]);
+Marisize(12,1);
+hold on
+
+
+for ii = 1:length(avgErrorByColorBinned)
+   tempExpanded =  repmat(avgErrorByColorBinned(ii),20,1)
+   if ii == 1
+       expandedErrorBinned = []
+   end
+  expandedErrorBinned = vertcat(expandedErrorBinned,tempExpanded)
+  clearvars tempExpanded
+end
+
+
+subplot(1,3,2);
+bar(avgErrorByColorBinned,'BarWidth', 1)
+title('Mean error on non zero-ms trials');
+Marisize(12,1);
+xlim([1,19]);
+hold on
+xticks(([1:19]));
+%  240, 260, 280, 300, 320, 340,350]));
+colorBins = 0:20:360;
+xticklabels(tickz)
+
+%now plot accuracy
+% subplot(1,4,2);
+% bar(expandedErrorBinned)
+% title('Mean error on non zero-ms trials');
+% Marisize(12,1);
+% xlim([0,360]);
+% hold on
+% xticks(([10:20:350]));
+% %  240, 260, 280, 300, 320, 340,350]));
+% colorBins = 0:20:360;
+% xlim([0,360]);
+% xticklabels(tickz)
+
+
+%now plot accuracy
+% subplot(1,4,3);
+% hist(guessrespAll,18);
+% hold on
+% bar(avgErrorByColorBinned);
+% title('Overlaid');
+% Marisize(12,1);
+% xlim([0,360]);
+% hold on
+% xticks(([10:20:350]));
+% %  240, 260, 280, 300, 320, 340,350]));
+% colorBins = 0:20:360;
+% xlim([0,360]);
+% xticklabels(tickz)
+
+
+
+hold on
+subplot(1,3,3);
+%plot(simMatStds);
+XData = [1:18]
+for i = 1 : length(simMatStds) - 1
+  line('XData', XData(i:i+1), 'YData', simMatStds(i:i+1), 'Color',colorMat(i,1,1:3),'Linewidth',2);
+end
+%xticklabels(tickz)
+Marisize(12,1);
+
+% for ii = 1:height(simMatStds) ;
+%   plot(simMatStds(ii,1),'Color',colorMat(ii,1,1:3),'Linewidth', 2)
+%   
+% end
+ title('std from Brady similarity task') 
+ xlim([0.5,18.5])
+xticks([]);
+sgtitle('Comparing std, accuracy, and similarity (all non-0 ms trials)') 
+%std(similarityMatrix(1,:))
+%plot(simMatStds)
+keyboard;
+
+
+%% Next let's compare accuracy, std, and brady similarity- 132 ms trials
+stdfig132 = figure(4);
+
+subplot(1,3,1);
+hist(guessrespAll,18); %18 bins so 20 observations per bin
+tickz = getColorsCM(18, 20)
+
+
+xticklabels(tickz)
+ylabel('frequency')
+title('Guess responses on zero-ms trials');
+xticks(([10:20:350]));
+%  240, 260, 280, 300, 320, 340,350]));
+colorBins = 0:20:360;
+xlim([0,360]);
+Marisize(12,1);
+hold on
+
+
+for ii = 1:length(avgErrorByColorBinned132)
+   tempExpanded132 =  repmat(avgErrorByColorBinned132(ii),20,1)
+   if ii == 1
+       expandedErrorBinned132 = []
+   end
+  expandedErrorBinned132 = vertcat(expandedErrorBinned132,tempExpanded132)
+  clearvars tempExpanded132
+end
+
+
+subplot(1,3,2);
+bar(avgErrorByColorBinned132,'BarWidth', 1)
+title('Mean error on 132-ms trials');
+Marisize(12,1);
+xlim([1,19]);
+hold on
+xticks(([1:19]));
+%  240, 260, 280, 300, 320, 340,350]));
+colorBins = 0:20:360;
+xticklabels(tickz)
+
+%now plot accuracy
+% subplot(1,4,2);
+% bar(expandedErrorBinned)
+% title('Mean error on non zero-ms trials');
+% Marisize(12,1);
+% xlim([0,360]);
+% hold on
+% xticks(([10:20:350]));
+% %  240, 260, 280, 300, 320, 340,350]));
+% colorBins = 0:20:360;
+% xlim([0,360]);
+% xticklabels(tickz)
+
+
+%now plot accuracy
+% subplot(1,4,3);
+% hist(guessrespAll,18);
+% hold on
+% bar(avgErrorByColorBinned);
+% title('Overlaid');
+% Marisize(12,1);
+% xlim([0,360]);
+% hold on
+% xticks(([10:20:350]));
+% %  240, 260, 280, 300, 320, 340,350]));
+% colorBins = 0:20:360;
+% xlim([0,360]);
+% xticklabels(tickz)
+
+
+
+hold on
+subplot(1,3,3);
+%plot(simMatStds);
+XData = [1:18]
+for i = 1 : length(simMatStds) - 1
+  line('XData', XData(i:i+1), 'YData', simMatStds(i:i+1), 'Color',colorMat(i,1,1:3),'Linewidth',2);
+end
+%xticklabels(tickz)
+Marisize(12,1);
+
+% for ii = 1:height(simMatStds) ;
+%   plot(simMatStds(ii,1),'Color',colorMat(ii,1,1:3),'Linewidth', 2)
+%   
+% end
+ title('std from Brady similarity task') 
+ xlim([0.5,18.5])
+xticks([]);
+%std(similarityMatrix(1,:))
+%plot(simMatStds)
+sgtitle('Comparing std, accuracy, and similarity (132 ms trials)') 
+keyboard;
+%% correlate
+guessesStds = vertcat(N,simMatStds',1:18);
+
+[N,edges,bin] = histcounts(guessrespAll,18);
+[R,P] = corrcoef(N,simMatStds);
+
+figure(5)
+%guessesStds = vertcat(N,simMatStds');
+groupColors = colorsforBinPlots;
+sz = 5;
+scatter(N, simMatStds, sz,'ko')
+l = lsline;
+set(l(1),'LineWidth',2)
+hold on
+s = gscatter(N, simMatStds,guessesStds(3,:),groupColors);
+set(s,'MarkerSize',40)
+xlabel(' number of guesses per color bin');
+ylabel('Brady stds');
+% l = lsline
+legend(gca,'off')
+Marisize(12,1)
+title('Correlation between guess frequency for each color bin and Brady similarity stds for each color bin')
+subtitle(['r = ',num2str(R(2))])
+keyboard;
+
+
+x = guessrespAll;
+pd = makedist('uniform','Lower',0,'Upper',359);
+%pd = makedist('uniform');
+[h,p,ci,stats] = kstest(x,'cdf',pd)
+keyboard;
+
+ %% Now interpolated similarity matrix
+% vq1 = interp1(simMatAvgs,similarityMatrix,-179:180,'spline');
+% 
+% %      for jj=1:length(colorBins2)-1
+% %     % Bins are 20 wide, so take the middle color (+10) to show
+% %     whichColor2 = colorBins2(jj)+10;   
+% %     colorMat2(1,jj,1:3) = colorsAll(whichColor2,:)./255;
+% %     
+% %      end
+%   
+% interpSim = figure(3);
+% subplot(3,1,1);
+% hist(guessrespAll,18); %18 bins so 20 observations per bin
+% colorBins = 0:20:360;
+% colorBins2 = 0:360;
+% xlim([0,360]);
+% xticks(([3,20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, ...
+%  240, 260, 280, 300, 320, 340,360]));
+% xticklabels(tickLabels);
+% title('histogram of guess responses');
+% ylabel('Frequency', 'FontSize', 18); 
+% Marisize(12,1)
+% 
+% 
+% subplot(3,1,2);
+% %[similarityMatrix,simMatAvgs,colorMat] = SimilarityMatrixCM(0)
+% C = []
+% clearvars ii 
+% 
+%     
+%    
+%   for ii = 1:360
+%       
+%       C(ii,:) = smoothdata(vq1(ii,:),'gaussian');
+% 
+%       plot(vq1(ii,:),'Color',colorsAll(ii,:)./255,'Linewidth', 2)
+% hold on
+% % subplot(3,1,3);
+% % plot(C(ii),'Color',colorMat(ii,1,1:3),'Linewidth', 2)
+% % gca
+% % xline(max(similarityMatrix(ii,:)))
+% % hold on
+% %line([mean(similarityMatrix(ii,:)) mean(similarityMatrix(ii,:))], [0 10]);
+% 
+% hold on
+%   end
+%   
+% %   subplot(3,1,3);
+% % 
+% %   imshow(imresize(colorMat2,[20 200],'nearest'));
+% % 
+% % sgtitle('Interpolated all')
+% hold off;
+% Marisize(12,1)
+%% Now model
+%%%%%%%% NEW 
+modelFig = figure(6);
+subplot(2,3,1);
+hist(guessrespAll,18); %18 bins so 20 observations per bin
+colorBins = 0:20:360;
+colorBins2 = 0:360;
+xlim([0,360]);
+ xticks(([3,20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, ...
+  240, 260, 280, 300, 320, 340,360]));
+% colznum = (1:360)'
+% colz = horzcat(colznum,colz)
+% clearvars colznum 
+
+hold on;
+title('histogram of guess responses');
+xlim([0,360]);
+ylabel('Frequency', 'FontSize', 18); 
+Marisize(12,1)
+
+subplot(2,3,2);
+ylim([0,360]);
+xlim([0,360]);
+plot(intAnsAll, intRespAll, 'ko');
+ylim([0,360]);
+xlim([0,360]);
+Marisize(12,1)
+
+hold on;
+
+subplot(2,3,3);
+plot(intAnsAll, intRespTransformedAll, 'ko');
+Marisize(12,1)
+xlim([0,360]);
+Marisize(12,1)
+hold on;
+
+
+[Y0bw, Y0dens, Y0mesh, Y0cdf] = kde(guessrespAll);
+sig0N = std(guessrespAll, 1);
+mean0N = mean(guessrespAll);
+title('Behavioral responses on non-zero ms trials'); 
+xlabel('Feature value', 'FontSize', 18); 
+xlim([0,360]);
+ylabel('Behavioral response', 'FontSize', 18); 
+smoothwindowsize = 0.5; % try to vary this: this variable is used for smoothing (especially when the numbers of trials for guessing condition and for actual test trials are not balanced)
+
+% out = MLE_ModelFunc_V25_noncirc(intAns,intResp,1000,Y0dens,Y0mesh,smoothwindowsize);
+%out = MLE_ModelFunc_V25_power_V1(intAnsAll,intRespTransformedAll,1000,Y0dens,Y0mesh,sig0N,mean0N, smoothwindowsize);
+
+
+out = MLE_ModelFunc_V25_noncirc_V1(intAnsAll,intRespTransformedAll,1000,Y0dens,Y0mesh,smoothwindowsize);
+
+%gcf(modelFig)
+% result
+subplot(2,3,4); 
+hist(out.latent); 
+xlim([0 1]); 
+xlabel('Probability (Pint)', 'FontSize', 18); 
+title('histogram of latent (Pint)'); 
+Marisize(12,1)
+subplot(2,3,5);
+xlim([0,360]);
+nn_tmp = length(out.X);
+Zmat = out.latent; 
+colorcode = zeros(nn_tmp,3);
+colorcode(:,1)=Zmat;
+colorcode(:,2)=1-Zmat;
+sizecode = (abs(Zmat-0.5)+0.4)*24;
+scatter(out.X,out.Y,sizecode,colorcode, 'linewidth',1.4);
+Marisize(12,1)
+hold off
+Marisize(12,1)
+55555;
+out;
+title('Model'); 
+xlabel('Feature value', 'FontSize', 18); 
+ylabel('Behavioral response', 'FontSize', 18); 
+averagePint = out.Pm;
+
+
+%% compare our fits
+out = MLE_ModelFunc_V25_noncirc_V1(intAnsAll,intRespTransformedAll,1000,Y0dens,Y0mesh,smoothwindowsize);
+
+%gcf(modelFig)
+% result
+
+figure(7)
+subplot(1,2,1)
+nn_tmp = length(out.X);
+Zmat = out.latent; 
+colorcode = zeros(nn_tmp,3);
+colorcode(:,1)=Zmat;
+colorcode(:,2)=1-Zmat;
+sizecode = (abs(Zmat-0.5)+0.4)*24;
+scatter(out.X,out.Y,sizecode,colorcode, 'linewidth',1.4);
+hold on
+Marisize(12,1)
+55555;
+out;
+title('Model- constant sd'); 
+xlabel('Feature value', 'FontSize', 18); 
+ylabel('Behavioral response', 'FontSize', 18); 
+averagePint = out.Pm;
+hold on
+
+
+subplot(1,2,2); 
+hist(out.latent); 
+xlim([0 1]); 
+xlabel('Probability (Pint)', 'FontSize', 18); 
+title('histogram of latent (Pint)'); 
+Marisize(12,1)
+hold off
+%%
+gcf
+out = MLE_ModelFunc_V25_noncirc_V2_variableSD(intAnsAll,intRespTransformedAll,1000,Y0dens,Y0mesh,smoothwindowsize, binsAns);
+
+%gcf(modelFig)
+% result
+
+% subplot(2,2,3)
+% nn_tmp = length(out.X);
+% Zmat = out.latent; 
+% colorcode = zeros(nn_tmp,3);
+% colorcode(:,1)=Zmat;
+% colorcode(:,2)=1-Zmat;
+% sizecode = (abs(Zmat-0.5)+0.4)*24;
+% scatter(out.X,out.Y,sizecode,colorcode, 'linewidth',1.4);
+% hold on
+% 
+% 
+% Marisize(12,1)
+% 55555;
+% out;
+% title('Model- binned SD'); 
+% xlabel('Feature value', 'FontSize', 18); 
+% ylabel('Behavioral response', 'FontSize', 18); 
+% averagePint = out.Pm;
+% 
+% hold on
+% 
+% subplot(2,2,4); 
+% hist(out.latent); 
+% xlim([0 1]); 
+% xlabel('Probability (Pint)', 'FontSize', 18); 
+% title('histogram of latent (Pint)'); 
+% Marisize(12,1)
+
+%% Plot the kernel
+
+
+
+figure(8)
+subplot(2,1,1)
+
+histogram(guessrespAll)
+xlim([0,360]);
+xticks(([0,20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, ...
+    240, 260, 280, 300, 320, 340,360]));
+ xticklabels(tickLabels)  %360
+Marisize(12,1)
+subplot(2,1,2)
+
+plot(Y0mesh',Y0dens)
+title('xmesh,density')
+xticks(([0,20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, ...
+    240, 260, 280, 300, 320, 340,360]));
+ xticklabels(tickLabels)  %360
+Marisize(12,1)
+
+5555;
+
+%% latent
+
+figure(9)
+latent = out.latent;
+latent = smooth(latent,.05);
+plot(latent)
+
+figure(10)
+mass1 = out.mass1;
+mass1 = smooth(mass1,.05);
+plot(mass1,'r')
+
+hold on
+mass2 = out.mass2;
+%mass2 = smooth(mass2,.0000001)
+
+plot(mass2,'b')
+
+hold on
+title('mass 1/mass 2')
+legend
+Marisize(12,1)
+
+
+%% Figure 4- precision
+latents = horzcat(((out.X)'),latent);
+
+
+% 
+% 
+% figure(5)
+% subplot(2,1,1)
+% 
+% histogram(guessrespAll)
+% xlim([0,360]);
+% xticks(([0,20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, ...
+%     240, 260, 280, 300, 320, 340,360]));
+%  xticklabels(tickLabels)  %360
+% Marisize(12,1)
+% subplot(2,1,2)
+% plot(Y0mesh',Y0dens, colz, 'filled')
+% title('xmesh,density')
+% Marisize(12,1)
+% 
+% 5555;
+% 
+% PlotSampledFamiliarity(famValue, conf)
+% 
+% function PlotSampledFamiliarity(famValue, conf)
+%   scatter(conf.confusionX', famValue', ...
+%     zeros(size(conf.confusionX))+30, conf.cols, 'filled');
+%   set(gca, 'YLim', [-3 6], 'XLim', [-181 180], 'XTick', [], 'FontSize', 14);
+%   ylabel('Familiarity');
+% end
+
+

@@ -1,0 +1,11 @@
+
+Feitong - Peripheral Dots Pattern Localization
+------
+How do we perceive shapes? Do we need to have a continuous contour of 
+the shape or not? In this study, we test whether people can recognize 
+different shapes that are purely made by dots. There is no continuous 
+contour of any shape, yet people seem to be able to understand many of 
+them. The second question we ask is what shapes are easier to recognize 
+than others and why. People search for a unique target shape among 
+several shapes and we want to see which shapes are easier to perceive. 
+******
