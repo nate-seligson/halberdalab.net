@@ -31,10 +31,10 @@
 </head>
 <body>
     <aside class = "call-to-action bg-primary">
-        <h1 id = "title"class = "text-center">Highschooler Form</h1>
+        <h1 id = "title"class = "text-center">Undergrad Research Assistant Form (Summer)</h1>
     </aside>
     <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
     <script type="text/javascript">
     (function(){
@@ -43,7 +43,6 @@
         });
     })();
     </script>
-    <script src = "js/datagrabber.js"></script>
     <container>
         <div class = "container">
             <div class = "row" id = "data_wrapper">
@@ -57,22 +56,28 @@
                 </div>
                 <div class = "form-group col-lg-2 col-md-6 col-sm-12">
                     <label for = "school"><h3>School Name</h3></label>
-                    <input class = "form-control" id = "school" placeholder="City High School">
+                    <input class = "form-control" id = "school" placeholder="City School">
                 </div>
-                <div class = "form-group col-lg-3 col-md-6 col-sm-12">
+                <div class = "form-group col-lg-2 col-md-6 col-sm-12">
                     <label for = "location"><h3>Location</h3></label>
                     <input class = "form-control" id = "location" placeholder="Chicago, IL">
                 </div>
-                <div class = "form-group col-lg-3 col-md-6 col-sm-12">
+                <div class = "form-group col-lg-2 col-md-6 col-sm-12">
                     <label for = "classyear"><h3>Class Year</h3></label>
                     <select class = "form-control" id = "classyear">
                         <option>Select...</option>
-                        <option>9 (Freshman)</option>
-                        <option>10 (Sophomore)</option>
-                        <option>11 (Junior)</option>
-                        <option>12 (Senior)</option>
+                        <option>Freshman</option>
+                        <option>Sophomore</option>
+                        <option>Junior</option>
+                        <option>Senior</option>
                     </select>
                 </div>
+                <div class = "form-group col-lg-2 col-md-6 col-sm-12">
+                    <label for = "major"><h3>Major</h3></label>
+                    <input class = "form-control" id = "major" placeholder="Psychology">
+                </div>
+                </div>
+                <div class = "row">
                 <div class = "form-group col-lg-6 col-sm-12">
                     <label for = "interest"><h3>Why are you interested in getting research experience?</h3></label>
                     <textarea class = "form-control" id = "interest" placeholder="Answer..."></textarea>
@@ -82,6 +87,10 @@
                     <textarea class = "form-control" id = "psychology" placeholder="Answer..."></textarea>
                 </div>
                 <div class = "form-group col-lg-6 col-sm-12">
+                    <label for = "broadly"><h3>Broadly speaking, what would you like to study here in the lab?</h3></label>
+                    <textarea class = "form-control" id = "broadly" placeholder="Answer..."></textarea>
+                </div>
+                <div class = "form-group col-lg-6 col-sm-12">
                     <label for = "relevant"><h3>What relevant coursework or research experience have you had? (It's OK if the answer amounts to "not much".)</h3></label>
                     <textarea class = "form-control" id = "relevant" placeholder="Answer..."></textarea>
                 </div>
@@ -89,8 +98,14 @@
                     <label for = "computer"><h3>Do you have any experience with computer programming? If not, are you willing and eager to learn?</h3></label>
                     <textarea class = "form-control" id = "computer" placeholder="Answer..."></textarea>
                 </div>
+                <div class = "form-group col-lg-6 col-sm-12">
+                    <label for = "living"><h3>Where would you live if working at Hopkins during the summer (do you have family in the area (preferred) or would you be looking for housing)?</h3></label>
+                    <textarea class = "form-control" id = "living" placeholder="Answer..."></textarea>
+                </div>
+                <script src = "js/datagrabber.js"></script>
             </div>
-            <button class = "btn btn-dark" id = "submitbutton">Submit</button>
+            <button class = "btn btn-dark"id = "submitbutton">Submit</button>
+        </div>
         </div>
     </container>
     <!-- Footer -->

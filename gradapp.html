@@ -31,10 +31,10 @@
 </head>
 <body>
     <aside class = "call-to-action bg-primary">
-        <h1 id = "title"class = "text-center">Highschooler Form</h1>
+        <h1 id = "title"class = "text-center">Graduate School Applicant Form</h1>
     </aside>
     <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
     <script type="text/javascript">
     (function(){
@@ -43,7 +43,6 @@
         });
     })();
     </script>
-    <script src = "js/datagrabber.js"></script>
     <container>
         <div class = "container">
             <div class = "row" id = "data_wrapper">
@@ -57,40 +56,50 @@
                 </div>
                 <div class = "form-group col-lg-2 col-md-6 col-sm-12">
                     <label for = "school"><h3>School Name</h3></label>
-                    <input class = "form-control" id = "school" placeholder="City High School">
+                    <input class = "form-control" id = "school" placeholder="City School">
                 </div>
-                <div class = "form-group col-lg-3 col-md-6 col-sm-12">
+                <div class = "form-group col-lg-2 col-md-6 col-sm-12">
                     <label for = "location"><h3>Location</h3></label>
                     <input class = "form-control" id = "location" placeholder="Chicago, IL">
                 </div>
-                <div class = "form-group col-lg-3 col-md-6 col-sm-12">
-                    <label for = "classyear"><h3>Class Year</h3></label>
-                    <select class = "form-control" id = "classyear">
-                        <option>Select...</option>
-                        <option>9 (Freshman)</option>
-                        <option>10 (Sophomore)</option>
-                        <option>11 (Junior)</option>
-                        <option>12 (Senior)</option>
-                    </select>
+                <div class = "form-group col-lg-2 col-md-6 col-sm-12">
+                    <label for = "major"><h3>Major</h3></label>
+                    <input class = "form-control" id = "major" placeholder="Psychology">
                 </div>
+                <div class = "form-group col-lg-3 col-md-6 col-sm-12">
+                    <label for = "majorGPA"><h3>GPA Inside Major</h3></label>
+                    <input type = "number" step = "0.1" class = "form-control" id = "majorGPA" placeholder="0.0">
+                </div>
+                <div class = "form-group col-lg-3 col-md-6 col-sm-12">
+                    <label for = "majorGPA"><h3>GPA Overall</h3></label>
+                    <input type = "number" step = "0.1" class = "form-control" id = "majorGPA" placeholder="0.0">
+                </div>
+                </div>
+                <div class = "row">
                 <div class = "form-group col-lg-6 col-sm-12">
-                    <label for = "interest"><h3>Why are you interested in getting research experience?</h3></label>
+                    <label for = "interest"><h3>What interests you most about psychology and about the Halberda group (Vision Lab) in particular? Please consider what we tend to study in our lab by reading some of our abstracts or papers.</h3></label>
                     <textarea class = "form-control" id = "interest" placeholder="Answer..."></textarea>
                 </div>
                 <div class = "form-group col-lg-6 col-sm-12">
-                    <label for = "psychology"><h3>What interests you most about psychology? Please consider what we tend to study in our lab by reading some of our abstracts or papers.</h3></label>
-                    <textarea class = "form-control" id = "psychology" placeholder="Answer..."></textarea>
+                    <label for = "broadly"><h3>Broadly speaking, what would you like to study here in the lab?</h3></label>
+                    <textarea class = "form-control" id = "broadly" placeholder="Answer..."></textarea>
                 </div>
                 <div class = "form-group col-lg-6 col-sm-12">
-                    <label for = "relevant"><h3>What relevant coursework or research experience have you had? (It's OK if the answer amounts to "not much".)</h3></label>
-                    <textarea class = "form-control" id = "relevant" placeholder="Answer..."></textarea>
+                    <label for = "psychology"><h3>What relevant coursework or research experience have you had?</h3></label>
+                    <textarea class = "form-control" id = "psychology" placeholder="Answer..."></textarea>
                 </div>
                 <div class = "form-group col-lg-6 col-sm-12">
                     <label for = "computer"><h3>Do you have any experience with computer programming? If not, are you willing and eager to learn?</h3></label>
                     <textarea class = "form-control" id = "computer" placeholder="Answer..."></textarea>
                 </div>
+                <div class = "form-group col-lg-6 col-sm-12">
+                    <label for = "living"><h3>Do you have interest in working with multiple Hopkins faculty, this is possible at Hopkins (if so, which ones)?</h3></label>
+                    <textarea class = "form-control" id = "living" placeholder="Answer..."></textarea>
+                </div>
+                <script src = "js/datagrabber.js"></script>
             </div>
-            <button class = "btn btn-dark" id = "submitbutton">Submit</button>
+            <button class = "btn btn-dark"id = "submitbutton">Submit</button>
+        </div>
         </div>
     </container>
     <!-- Footer -->
