@@ -43,7 +43,7 @@ body {
 }
 
 h4 {
-    margin 0;
+    margin: 0;
 }
 
 h6 {
@@ -80,7 +80,7 @@ h6 {
 }
 .link-lightS:hover,
 .link-lightS:focus,
-.link-lightS:active,
+.link-lightS:active
  {
     color: #333;
     background-color: rgba(255,255,255,0.8);
