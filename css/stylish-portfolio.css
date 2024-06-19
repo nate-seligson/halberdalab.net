@@ -41,7 +41,6 @@ body {
     color: white;
     background-color: rgba(0,0,0,0.4);
 }
-
 h4 {
     margin: 0;
 }
@@ -205,10 +204,16 @@ hr.small {
 
 .service-item {
     margin-bottom: 30px;
+    transition: 0.5s ease;
+    filter:contrast(100%);
 }
-
+.service-item:hover{
+    filter:contrast(500%);
+}
 /* Callout */
-
+button{
+    transition:0.5s ease;
+}
 .callout {
     display: table;
     width: 100%;
